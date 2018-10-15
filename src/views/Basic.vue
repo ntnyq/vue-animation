@@ -2,7 +2,7 @@
   <div class="basic">
     <ls-section title="初始过渡">
       <button slot="ctrl" @click="isShow = !isShow" type="button">切换显示</button>
-      <transition slot="main" appear appear-active-class="animated bounceOutLeft">
+      <transition slot="main" appear appear-active-class="animated fadeOutRightBig">
         <ls-box v-show="isShow" />
       </transition>
     </ls-section>

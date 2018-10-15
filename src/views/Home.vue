@@ -2,6 +2,7 @@
   <div class="home">
     <ul class="nav">
       <li><router-link to="/basic">基础用法</router-link></li>
+      <li><router-link to="/hook">钩子函数</router-link></li>
       <li><router-link to="/about">关于我</router-link></li>
     </ul>
   </div>
@@ -16,6 +17,7 @@ export default {
 <style lang="scss">
 .home {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex: 1;
