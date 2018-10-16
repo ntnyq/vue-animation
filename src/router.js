@@ -28,6 +28,12 @@ export default new Router({
       path: '/hook',
       name: 'hook',
       component: () => import(/* webpackChunkName: "hook" */ './views/Hook.vue')
+    },
+
+    {
+      path: '/multi',
+      name: 'multi',
+      component: () => import(/* webpackChunkName: "multi" */ './views/Multi.vue')
     }
   ]
 })

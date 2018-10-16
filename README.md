@@ -2,9 +2,12 @@
 
 > Vuejs与动画。
 
+**！！！本文非原创，是对别人博文的学习笔记，加上自己的思考和写Demo。原文章地址，请查看下面的参考资料。**
+
 ![](https://travis-ci.org/ntnyq/vue-animation.svg?branch=dev)
 
 ### Table of Contents
+=====================
 
    * [Vue与动画](#vue与动画)
       * [基本介绍](#基本介绍)
@@ -17,6 +20,12 @@
          * [使用关键帧动画](#使用关键帧动画)
          * [指定过渡持续时间](#指定过渡持续时间)
          * [初试渲染的过渡](#初试渲染的过渡)
+      * [JS动画](#js动画)
+         * [初始渲染](#初始渲染)
+      * [多元素组件动画](#多元素组件动画)
+         * [多元素动画](#多元素动画)
+         * [过渡模式](#过渡模式)
+         * [多组件过渡](#多组件过渡)
       * [参考资料](#参考资料)
 
 ## 基本介绍
@@ -209,6 +218,110 @@ export default {
 </transition>
 ```
 
+## 多元素组件动画
+
+### 多元素动画
+
+- 如果有2个原生元素，我们可以使用`v-if/v-else`来实现多元素之间的过渡。
+- 如果有多个元素(2个以上)，我们可以使用并列的多个`v-if`来实现多个元素的过渡。
+
+**注意：** 如果发送动画的元素标签名相同，注意给需要发生过渡的元素上加上不同的**`key`**值，否则`Vue`只会更新标签的内容。
+
+``` html
+<transition
+  enter-active-name="animated slideInRight"
+  leaveActiveClass="animated slideOutLeft">
+  <button v-if="status === 0"
+    type="button"
+    :key="0">活动未开始</button>
+  <button v-if="status === 1" 
+    type="button" 
+    :key="1">活动进行中</button>
+  <button v-if="status === 2" 
+  type="button" 
+  :key="2">活动已结束</button>
+</transition>
+```
+有时候，我们只需要给元素绑定`key`值，若`key`值发生变化，也可以触发过渡效果。
+
+``` html
+<button @click="status++" type="button">点击切换</button>
+<transition
+  enter-active-name="animated slideInRight"
+  leaveActiveClass="animated slideOutLeft">
+  <button
+    type="button"
+    :key="status">{{text}}</button>
+</transition>
+```
+
+``` js
+export default {
+  computed: {
+    text () {
+      return ['活动未开始', '活动进行中', '活动已完成'][this.status % 3]
+    }
+  },
+  data () {
+    return {
+      status: 0
+    }
+  }
+}
+```
+
+### 过渡模式
+
+在我们的动画里，尤其是在使用动画库实现多元素过渡时，常会出现动画重叠的现象。而过渡模式正是为了解决这一问题而提供的API。有两种名过渡模式可以使用：
+
+- **in-out** 新元素先完成过渡，完成之后当前元素过渡离开。(**默认模式**)
+- **out-in** 当前元素先完成过渡离开，离开后新元素再过渡进入。
+
+### 多组件过渡
+
+多组件之间过渡，我们可以使用**动态组件**来进行实现。
+
+> Vue-cli创建的项目模板，使用的是*runtime-only*的环境，不支持使用`tenmplate`的模板自定义组件。
+
+``` html
+<button slot="ctrl"
+    @click="isShow = !isShow"
+    style="margin-right: 30px;"
+    type="button">切换显示</button>
+<transition enter-active-class="animated bounceInRight"
+    leave-active-class="animated bounceOutLeft"
+    mode="out-in"
+    slot="main">
+    <!-- 动态组件 -->
+    <component :is="circle"></component>
+</transition>
+```
+
+``` js
+import RedCircle from '@/components/Circle/RedCircle'
+import BlueCircle from '@/components/Circle/BlueCircle'
+
+export default {
+
+  components: {
+    RedCircle,
+    BlueCircle
+  },
+
+  computed: {
+
+    circle () {
+      return this.isShow ? 'red-circle' : 'blue-circle'
+    }
+  },
+
+  data () {
+    return {
+      isShow: true
+    }
+  }
+}
+```
 
 ## 参考资料
-[Vue.js - Transition过渡动画的使用](http://m.hangge.com/news/cache/detail_2134.html)
+[Vue.js - Transition过渡动画的使用 系列文章](http://m.hangge.com/news/cache/detail_2134.html)

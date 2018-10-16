@@ -1,22 +1,18 @@
 <template>
   <div id="app">
     <h1>Vue与动画</h1>
-    <a
-      @click="$router.push({ name: 'home'})"
+    <a @click="$router.push({ name: 'home'})"
       class="back"
-      href="javascript:;"
-    >🔙</a>
+      href="javascript:;">🔙</a>
     <div class="container">
       <router-view />
     </div>
     <footer>
-      <iframe
-        allowtransparency="true"
+      <iframe allowtransparency="true"
         scrolling="no"
         frameborder="0"
         src="https://buttons.github.io/buttons.html#href=https%3A%2F%2Fgithub.com%2Fntnyq&amp;aria-label=Follow%20%40ntnyq%20on%20GitHub&amp;data-text=Follow%20%40ntnyq&amp;data-size=large&amp;data-show-count=true"
-        style="width: 174.5px; height: 28px; margin: 20px auto; border: none;"
-      ></iframe>
+        style="width: 174.5px; height: 28px; margin: 20px auto; border: none;"></iframe>
     </footer>
   </div>
 </template>

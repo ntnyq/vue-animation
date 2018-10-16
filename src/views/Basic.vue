@@ -1,26 +1,41 @@
 <template>
   <div class="basic">
     <ls-section title="初始过渡">
-      <button slot="ctrl" @click="isShow = !isShow" type="button">切换显示</button>
-      <transition slot="main" appear appear-active-class="animated fadeOutRightBig">
+      <button slot="ctrl"
+        @click="isShow = !isShow"
+        type="button">切换显示</button>
+      <transition slot="main"
+        appear
+        appear-active-class="animated fadeOutRightBig">
         <ls-box v-show="isShow" />
       </transition>
     </ls-section>
     <ls-section title="基本用法">
-      <button slot="ctrl" @click="isShow = !isShow" type="button">切换显示</button>
-      <transition slot="main" name="fade">
+      <button slot="ctrl"
+        @click="isShow = !isShow"
+        type="button">切换显示</button>
+      <transition slot="main"
+        name="fade">
         <ls-box v-show="isShow" />
       </transition>
     </ls-section>
     <ls-section title="自定义类名">
-      <button slot="ctrl" @click="isShow = !isShow" type="button">切换显示</button>
-      <transition enter-active-class="animated tada" leave-active-class="animated bounceOutRight" slot="main" name="cus-animate">
+      <button slot="ctrl"
+        @click="isShow = !isShow"
+        type="button">切换显示</button>
+      <transition enter-active-class="animated tada"
+        leave-active-class="animated bounceOutRight"
+        slot="main"
+        name="cus-animate">
         <ls-box v-show="isShow" />
       </transition>
     </ls-section>
     <ls-section title="关键帧动画">
-      <button slot="ctrl" @click="isShow = !isShow" type="button">切换显示</button>
-      <transition slot="main" name="fold">
+      <button slot="ctrl"
+        @click="isShow = !isShow"
+        type="button">切换显示</button>
+      <transition slot="main"
+        name="fold">
         <ls-box v-show="isShow" />
       </transition>
     </ls-section>
@@ -78,14 +93,14 @@ export default {
     transform: scale(0.9) rotate(-5deg);
   }
   100% {
-    opacity: 1.0;
-    transform: scale(1.0) rotate(0deg);
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
   }
 }
 @keyframes fold-out {
   0% {
-    opacity: 1.0;
-    transform: scale(1.0) rotate(0deg);
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
   }
   33% {
     opacity: 0.67;

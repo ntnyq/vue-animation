@@ -1,9 +1,18 @@
 <template>
   <div class="home">
     <ul class="nav">
-      <li><router-link to="/basic">基础用法</router-link></li>
-      <li><router-link to="/hook">钩子函数</router-link></li>
-      <li><router-link to="/about">关于我</router-link></li>
+      <li class="nav-item">
+        <router-link to="/basic">基础用法</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/hook">钩子函数</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/multi">多元素</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/about">关于我</router-link>
+      </li>
     </ul>
   </div>
 </template>

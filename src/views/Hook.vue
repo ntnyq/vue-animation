@@ -1,18 +1,23 @@
 <template>
   <div class="hook">
     <ls-section title="初始渲染">
-      <button slot="ctrl" @click="isShow = !isShow" type="button">切换显示</button>
+      <button slot="ctrl"
+        @click="isShow = !isShow"
+        type="button">切换显示</button>
       <transition slot="main"
         appear
         @before-appear="beforeAppear"
         @appear="appear"
         @after-appear="afterAppear"
         @appear-cancelled="appearCancelled">
-        <ls-box v-show="isShow" class="box1" />
+        <ls-box v-show="isShow"
+          class="box1" />
       </transition>
     </ls-section>
     <ls-section title="钩子函数">
-      <button slot="ctrl" @click="isShow = !isShow" type="button">切换显示</button>
+      <button slot="ctrl"
+        @click="isShow = !isShow"
+        type="button">切换显示</button>
       <transition slot="main"
         @before-enter="beforeEnter"
         @enter="enter"
@@ -22,7 +27,8 @@
         @leave="leave"
         @after-leave="afterLeave"
         @leave-cancelled="leaveCancelled">
-        <ls-box v-show="isShow" class="box2" />
+        <ls-box v-show="isShow"
+          class="box2" />
       </transition>
     </ls-section>
   </div>

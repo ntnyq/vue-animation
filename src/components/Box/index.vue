@@ -1,5 +1,6 @@
 <template>
-  <div class="ls-box">
+  <div class="ls-box"
+    :style="`baxckground-color: ${color}`">
     <slot></slot>
   </div>
 </template>
