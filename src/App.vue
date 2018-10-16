@@ -4,7 +4,7 @@
     <a
       @click="$router.push({ name: 'home'})"
       class="back"
-      href="javascript"
+      href="javascript:;"
     >🔙</a>
     <div class="container">
       <router-view />
