@@ -2,6 +2,8 @@
 
 > Vuejs与动画。
 
+![](https://travis-ci.org/ntnyq/vue-animation.svg?branch=dev)
+
 ### Table of Contents
 
    * [Vue与动画](#vue与动画)
@@ -143,31 +145,31 @@ export default {
 
   methods: {
 
-    //* 进入过渡 */ 
-    
+    //* 进入过渡 */
+
     // 设置进入过渡之前的状态
     beforeEnter (el) {
       log('> beforeEnter')
     },
-    
+
     // 设置进入过渡完成时的状态
     enter (el, done) {
       log('> enter')
       done()
     },
-    
+
     // 设置进入过渡完成后的状态
     afterEnter (el) {
       log('> afterEnter')
     },
-    
+
     // 只用于v-show中
     enterCancelled (el) {
       log('> enterCancelled')
     },
 
-    //* 离开过渡 */ 
-    
+    //* 离开过渡 */
+
     // 设置离开过渡之前的状态
     beforeLeave (el) {
       log('> beforeLeave')
@@ -178,12 +180,12 @@ export default {
       log('> leave')
       done()
     },
-    
+
     // 设置离开过渡完成后的状态
     afterLeave (el) {
       log('> afterLeave')
     },
-    
+
     // 只用于v-show中
     leaveCancelled (el) {
       log('> leaveCancelled')
