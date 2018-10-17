@@ -1,17 +1,10 @@
 <template>
   <div class="home">
     <ul class="nav">
-      <li class="nav-item">
-        <router-link to="/basic">基础用法</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link to="/hook">钩子函数</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link to="/multi">多元素</router-link>
-      </li>
-      <li class="nav-item">
-        <router-link to="/about">关于我</router-link>
+      <li v-for="item in navs"
+        :key="item.name"
+        class="nav-item">
+        <router-link :to="`/${item.path}`">{{item.name}}</router-link>
       </li>
     </ul>
   </div>
@@ -19,7 +12,19 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+
+  data () {
+    return {
+      navs: [
+        { path: 'basic', name: '基础用法' },
+        { path: 'hook', name: '钩子函数' },
+        { path: 'multi', name: '多个元素' },
+        { path: 'list', name: '列表过渡' },
+        { path: 'about', name: '关于我' }
+      ]
+    }
+  }
 }
 </script>
 

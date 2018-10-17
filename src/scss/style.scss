@@ -11,7 +11,8 @@ a {
   outline: none;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
 }
 
@@ -34,5 +35,21 @@ button {
     background-color: #61b1ff;
     border-color: #61b1ff;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+  }
+}
+
+.input {
+  width: 240px;
+  height: 40px;
+  line-height: 38px;
+  padding: 0 .8em;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+  transition: all .3s ease-out;
+  &:focus {
+    border-color: #61b1ff;
   }
 }

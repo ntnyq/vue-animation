@@ -118,6 +118,8 @@
 
 ## JS动画
 
+### 钩子函数
+
 我们可以在`transition`组件上添加**钩子函数**，来监听过渡的执行过程，在合适的时机执行绑定在钩子函数上的JS动画，来实现过渡效果。需要注意的是：
 
 - 当只存在Javascript动画时，必须在`leave`和`enter`中，调用其回调函数。否则他们将被同步调用，过渡会立即完成。(动画库会提供动画完成回调。比如`animejs`)
@@ -322,6 +324,93 @@ export default {
   }
 }
 ```
+## 列表过渡
+`transition`组件经常用于处理单个、或者同一时间几个节点的运动。而对于整个列表的过渡，（比如使用v-for）产生的，我们就需要使用`<transition-group></transition-group>`来让整个列表实现过渡。
+
+### 基本说明
+1. 与`transition`不同的是，`<transition-group></transition-group>`组件会被真实地渲染为**HTML节点**，默认会被渲染为`span`元素，通过指定**tag**属性可以改变渲染的元素。
+2. 过渡模式在**列表渲染**中是不可用的，因为我们不再相互切换特有的元素。
+3. `<transition-group></transition-group>`组件内部的元素必须有唯一的**key**值。
+
+### 进入离开列表
+**！！！注意** 在列表循环的时候，不要把循环的*index*值绑定给**key**，因为`index`不变的元素将不会发生运动。
+
+### 列表排序过渡
+普通的列表过渡只有新插入或者移除的元素拥有过渡，周围别的元素的过渡还是瞬间移动到它们布局位置，而不是拥有平滑的过渡。要解决这个问题就需要利用另一个特性**v-move**。
+
+ `v-move`特性会在元素改变定位的过程中应用，和之前的类名一样，它也有如下特性：
+ 
+ 1. 可以通过`name`属性来自定义前缀。（若设置`name=“xxx”`，对应存在类名`xxx-move`）
+ 2. 也可以通过`move-class`属性手动设置自定义类名。
+
+> 绑定列表动画的时候可以绑定`data-index`属性到元素上，访问的时候获取索引
+
+``` html
+<ls-section title=“排序过渡”>
+  <button slot=“ctrl”
+    @click=“add”
+    style=“margin-right: 30px;”
+    type=“button”>添加</button>
+  <button slot=“ctrl”
+    @click=“remove”
+    type=“button”>删除</button>
+  <transition-group slot=“main”
+    name=“list2”
+    tag=“p”>
+    <span v-for=“num in array”
+      :key=“num”
+      class=“num”>{{num}}</span>
+  </transition-group>
+</ls-section>
+```
+
+``` js
+export default {
+    data () {
+    return {
+      array2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    }
+  },
+
+  methods: {
+    random () {
+      return Math.floor(Math.random() * this.array.length)
+    },
+
+    add () {
+      this.array.splice(this.random(), 0, this.next++)
+    },
+
+    remove () {
+      this.array.splice(this.random(), 1)
+    }
+  }
+}
+```
+
+``` scss
+.list2 {
+
+    // 插入与移除过程
+    &-enter-active,
+    &-leave-active {
+        transition: all 1s;
+    }
+
+    // 开始插入 和 移除结束的位置
+    &-enter,
+    &-leave-to {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+}
+
+// 元素定位变化动画
+.list2-move {
+    transition: all 1s;
+}
+```
+
 
 ## 参考资料
 [Vue.js - Transition过渡动画的使用 系列文章](http://m.hangge.com/news/cache/detail_2134.html)

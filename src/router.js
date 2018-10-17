@@ -34,6 +34,12 @@ export default new Router({
       path: '/multi',
       name: 'multi',
       component: () => import(/* webpackChunkName: "multi" */ './views/Multi.vue')
+    },
+
+    {
+      path: '/list',
+      name: 'list',
+      component: () => import(/* webpackChunkName: "list" */ './views/List.vue')
     }
   ]
 })
