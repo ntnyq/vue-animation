@@ -21,6 +21,7 @@ export default {
         { path: 'hook', name: '钩子函数' },
         { path: 'multi', name: '多个元素' },
         { path: 'list', name: '列表过渡' },
+        { path: 'anime', name: 'Animate' },
         { path: 'about', name: '关于我' }
       ]
     }

@@ -1,6 +1,6 @@
 <template>
   <div class="ls-box"
-    :style="`baxckground-color: ${color}`">
+    :style="`background-color: ${bgColor}`">
     <slot></slot>
   </div>
 </template>
@@ -9,7 +9,10 @@
 export default {
   name: 'LsBox',
   props: {
-    color: String
+    bgColor: {
+      type: String,
+      default: 'red'
+    }
   }
 }
 </script>
@@ -19,6 +22,5 @@ export default {
   width: 100px;
   height: 100px;
   border-radius: 3px;
-  background-color: red;
 }
 </style>

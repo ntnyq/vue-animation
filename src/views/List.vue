@@ -215,6 +215,11 @@ export default {
     }
   }
 
+  // 移除时元素固定
+  .list2-leave-active {
+    position: absolute;
+  }
+
   // 元素定位变化动画
   .list2-move {
     transition: all 1s;
@@ -226,15 +231,16 @@ export default {
 
   .cells {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 380px;
+    width: 280px;
 
     .cell {
       display: flex;
       justify-content: space-around;
       align-items: center;
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       border: 1px solid #ccc;
       margin-right: -1px;
       margin-bottom: -1px;

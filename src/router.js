@@ -40,6 +40,12 @@ export default new Router({
       path: '/list',
       name: 'list',
       component: () => import(/* webpackChunkName: "list" */ './views/List.vue')
+    },
+
+    {
+      path: '/anime',
+      name: 'anime',
+      component: () => import(/* webpackChunkName: "anime" */ './views/Anime.vue')
     }
   ]
 })

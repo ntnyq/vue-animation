@@ -405,12 +405,83 @@ export default {
     }
 }
 
+// 移除过程中位置固定
+.list2-leave-active {
+    position: absolute;
+}
+
 // 元素定位变化动画
 .list2-move {
     transition: all 1s;
 }
 ```
+### 时间设置
 
+#### 过渡延迟时间
+
+`animated.css`内置了延时`1s`至`5s`的类，格式为`delay-1s`至`delay-5s`，当然根据自己需要，我们可以自定义别的`过渡延迟时间`，再将对应的类附加到动画元素上即可。
+
+``` css
+.delay-10s {
+    animation-delay: 10s
+}
+```
+#### 过渡持续时间
+
+> `animate.css`中提供的动画，默认过渡持续时间为**1s**。
+
+不过，它仍然提供了常用的几个持续时间类供我们使用。
+
+- `slow` 动画过渡持续**2s**
+- `slower` 动画过渡持续**3s**
+- `fast` 动画过渡持续**800ms**
+- `faster` 动画过渡持续**500ms**
+
+当然，如果上述提供的持续时间不能满足你的需求，你仍然可以自定义持续时间类来使用。
+
+## 集成Animate.css
+
+首先，需要下载**animate.css**并引入。
+
+``` bash
+$ yarn add animate.css
+
+```
+然后在`main.js`中引用它。
+
+``` js
+// main.js
+
+import ‘animate.css’ // 这里animate.css是依赖的名字
+```
+
+### 基本使用
+
+使用`enter-active-class`和`leave-active-class`即可以指定`animate.css`提供的动画类为动画形式。
+
+**注意！！！** 需要在上面的两个类上加`animated`类，或者直接加在过渡元素上面。若为多个元素过渡或者列表过渡的时候，则建议把`animated`类加在Vue的**动画状态类**上。
+
+``` html
+<button slot="ctrl"
+    @click=“isShow = !isShow”
+    type=“button”>切换显示</button>
+<transition slot=“main”
+    enter-active-class=“zoomIn”
+    leave-active-class=“zoomOut”>
+    <ls-box v-show=“isShow”
+    class=“animated” />
+</transition>
+
+
+<button slot="ctrl"
+    @click=“isShow = !isShow”
+    type=“button”>切换显示</button>
+<transition slot=“main”
+    enter-active-class=“animated zoomIn”
+    leave-active-class=“animated zoomOut”>
+    <ls-box v-show=“isShow” />
+</transition>
+```
 
 ## 参考资料
 [Vue.js - Transition过渡动画的使用 系列文章](http://m.hangge.com/news/cache/detail_2134.html)
