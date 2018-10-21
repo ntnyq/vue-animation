@@ -6,8 +6,9 @@
 
 ![](https://travis-ci.org/ntnyq/vue-animation.svg?branch=dev)
 
-### Table of Contents
-=====================
+
+Table of Contents
+=================
 
    * [Vue与动画](#vue与动画)
       * [基本介绍](#基本介绍)
@@ -21,11 +22,24 @@
          * [指定过渡持续时间](#指定过渡持续时间)
          * [初试渲染的过渡](#初试渲染的过渡)
       * [JS动画](#js动画)
+         * [钩子函数](#钩子函数)
          * [初始渲染](#初始渲染)
       * [多元素组件动画](#多元素组件动画)
          * [多元素动画](#多元素动画)
          * [过渡模式](#过渡模式)
          * [多组件过渡](#多组件过渡)
+      * [列表过渡](#列表过渡)
+         * [基本说明](#基本说明)
+         * [进入离开列表](#进入离开列表)
+         * [列表排序过渡](#列表排序过渡)
+         * [时间设置](#时间设置)
+            * [过渡延迟时间](#过渡延迟时间)
+            * [过渡持续时间](#过渡持续时间)
+      * [集成Animate.css](#集成animatecss)
+         * [基本使用](#基本使用)
+      * [结合Vue-router](#结合vue-router)
+         * [基本使用](#基本使用-1)
+         * [路由切换多种动画](#路由切换多种动画)
       * [参考资料](#参考资料)
 
 ## 基本介绍
@@ -482,6 +496,86 @@ import ‘animate.css’ // 这里animate.css是依赖的名字
     <ls-box v-show=“isShow” />
 </transition>
 ```
+## 结合Vue-router
+
+> 使用了`vue-router`的项目在页面跳转间加上过渡效果，可以让页面切换更加平滑，提升用户体验。
+
+### 基本使用
+
+``` html
+<transition enter-active-class="animated fadeInDown"
+    leave-active-class=“animated fadeOutUp”
+    mode=“out-in”>
+    <keep-alive>
+      <router-view />
+    </keep-alive>
+</transition>
+```
+
+### 路由切换多种动画
+
+``` js
+// router.js
+
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+const router = {
+  mode: 'hash',
+  routes: [
+    {
+      path: '/path1'
+      name: 'page1',
+      component: () => import('@/views/page1'),
+      meta: {
+        transitionInName: 'fadeIn',
+        transitionOutName: 'fadeOut'
+      }
+    },
+
+    {
+      path: '/path2',
+      name: 'page2',
+      component: () => import('@/views/page2'),
+      meta: {
+        transitionInName: 'slideInLeft',
+        transitionOutName: 'slideOutRight'
+      }
+    }
+  ]
+}
+
+```
+
+``` js
+// App.vue 或者别的包含transition组件包括了router-view的文件
+
+export default {
+  name: 'App',
+  data () {
+    return {
+      trsInName: 'fadeIn',
+      trsOutName: 'fadeOut'
+    }
+  },
+  watch: {
+    '$route' (to) {
+
+      let { transitionInName } = to.meta,
+          { transitionOutName } = to.meta;
+
+      transitionInName && (this.trsInName = transitionInName)
+      transitionOutName && (this.trsOutName = transitionOutName)
+    }
+  }
+}
+```
 
 ## 参考资料
 [Vue.js - Transition过渡动画的使用 系列文章](http://m.hangge.com/news/cache/detail_2134.html)
+
+## 工具
+
+**TOC** Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)

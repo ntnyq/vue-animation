@@ -22,6 +22,7 @@ export default {
         { path: 'multi', name: '多个元素' },
         { path: 'list', name: '列表过渡' },
         { path: 'anime', name: 'Animate' },
+        { path: 'router', name: '路由切换' },
         { path: 'about', name: '关于我' }
       ]
     }

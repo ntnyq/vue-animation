@@ -5,7 +5,13 @@
       class="back"
       href="javascript:;">🔙</a>
     <div class="container">
-      <router-view />
+      <transition enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+        mode="out-in">
+        <keep-alive>
+          <router-view />
+        </keep-alive>
+      </transition>
     </div>
     <footer>
       <iframe allowtransparency="true"
@@ -47,6 +53,7 @@
     position: fixed;
     top: 20px;
     left: 20px;
+    z-index: 999;
     display: block;
     line-height: 1;
     font-size: 50px;

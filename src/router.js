@@ -46,6 +46,12 @@ export default new Router({
       path: '/anime',
       name: 'anime',
       component: () => import(/* webpackChunkName: "anime" */ './views/Anime.vue')
+    },
+
+    {
+      path: '/router',
+      name: 'router',
+      component: () => import(/* webpackChunkName: "router" */ './views/Router.vue')
     }
   ]
 })
