@@ -18,8 +18,8 @@
 defineProps({
   title: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 </script>
 
@@ -29,7 +29,6 @@ defineProps({
   margin-bottom: 40px;
 
   .ls-section {
-
     &-title {
       position: relative;
       padding: 10px 0;

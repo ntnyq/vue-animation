@@ -11,8 +11,8 @@
 defineProps({
   bgColor: {
     type: String,
-    default: 'red'
-  }
+    default: 'red',
+  },
 })
 </script>
 

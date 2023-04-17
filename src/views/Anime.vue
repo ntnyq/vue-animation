@@ -24,7 +24,7 @@
     <ls-section title="元素切换">
       <template #ctrl>
         <button
-          @click="num++;"
+          @click="num++"
           type="button"
         >
           切换显示
@@ -53,7 +53,7 @@
       <template #ctrl>
         <button
           @click="add"
-          style="margin-right: 30px;"
+          style="margin-right: 30px"
           type="button"
         >
           添加
@@ -128,7 +128,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const num = ref(1)
 const next = ref(10)
@@ -139,7 +139,7 @@ const add = () => {
   array.value.splice(random(), 0, next.value++)
 }
 const remove = () => {
-  array.value.splice(random(), 1, )
+  array.value.splice(random(), 1)
 }
 </script>
 

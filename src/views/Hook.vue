@@ -68,16 +68,16 @@ const beforeAppear = (el: HTMLElement) => {
   el.style.cssText = ''
 }
 
-const appear = (el: HTMLElement, done: AnimeDone)  =>{
+const appear = (el: HTMLElement, done: AnimeDone) => {
   anime({
     targets: el,
     opacity: 0.2,
     translateX: 300,
     duration: 3000,
-    complete () {
+    complete() {
       log('> Appear am called')
       done()
-    }
+    },
   })
 }
 
@@ -85,7 +85,7 @@ const afterAppear = () => {}
 
 const appearCancelled = () => {}
 
-    // 进入过渡
+// 进入过渡
 const beforeEnter = () => {
   log('> beforeEnter')
 }
@@ -97,19 +97,21 @@ const enter = (el: HTMLElement, done: AnimeDone) => {
     translateX: (el.parentElement?.clientWidth ?? 0) - 100 * 2,
     scale: 0.5,
     backgroundColor: '#012345',
-    duration () { return anime.random(800, 1600) },
-    complete () {
+    duration() {
+      return anime.random(800, 1600)
+    },
+    complete() {
       log('> enter')
       done()
-    }
+    },
   })
 }
 
-const afterEnter =  () => {
+const afterEnter = () => {
   log('> afterEnter')
 }
 
-const enterCancelled =  () => {
+const enterCancelled = () => {
   log('> enterCancelled')
 }
 
@@ -126,14 +128,14 @@ const leave = (el: HTMLElement, done: AnimeDone) => {
     scale: '1',
     backgroundColor: '#f00',
     duration: 1500,
-    complete () {
+    complete() {
       log('> leave')
       done()
-    }
+    },
   })
 }
 
-const afterLeave = (el: HTMLElement)  => {
+const afterLeave = (el: HTMLElement) => {
   el.style.cssText = ''
   log('> afterLeave')
 }

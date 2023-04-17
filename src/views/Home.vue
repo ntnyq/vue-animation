@@ -6,7 +6,7 @@
         :key="item.name"
         class="nav-item"
       >
-        <RouterLink :to="`/${item.path}`">{{item.name}}</RouterLink>
+        <RouterLink :to="`/${item.path}`">{{ item.name }}</RouterLink>
       </li>
     </ul>
   </div>
@@ -22,7 +22,7 @@ const list = ref([
   { path: 'list', name: '列表过渡' },
   { path: 'anime', name: 'Animate' },
   { path: 'router', name: '路由切换' },
-  { path: 'about', name: '关于我' }
+  { path: 'about', name: '关于我' },
 ])
 </script>
 

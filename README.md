@@ -42,9 +42,7 @@
 
 ### Transition 组件
 
-> \<transition>\</transition>
-
-1. 若某个元素或者组件需要有过渡效果，只需使用 Vue 内置的`transition`组件将其包裹起来封装成过渡组件即可。
+1. 若某个元素或者组件需要有过渡效果，只需使用 Vue 内置的 `Transition` 组件将其包裹起来封装成过渡组件即可。
 2. Vue 只有在**插入**、**更新**和**销毁**元素或者组件时才会使用过渡效果。例如：
    - v-if (条件渲染)
    - v-show (条件展现)
@@ -55,8 +53,8 @@
 
 主要有以下两种过渡的实现方式：
 
-1. 利用 CSS 过渡(`transition`)或者关键帧动画(`@keyframes`)来实现。
-2. 利用 JavaScript 来实现(建议使用动画库，如`animejs`)。
+1. 利用 CSS 过渡 (`transition`) 或者关键帧动画 (`@keyframes`) 来实现。
+2. 利用 JavaScript 来实现(建议使用动画库，如 `animejs` )。
 
 ### 动画执行逻辑
 
@@ -68,31 +66,41 @@
 
 ## CSS 动画
 
-### transition 组件的钩子状态
+### Transition 组件的钩子状态
 
-当我们给 transition 组件设置一个 name 属性，例如`<transition name="fade"></transition>`，那么在过渡组件发生过渡的时候，会有以下 6 个类名发生切换。
+当我们给 Transition 组件设置一个 name 属性，例如 `<transition name="fade"></transition>`，那么在过渡组件发生过渡的时候，会有以下 6 个类名发生切换。
 
-- **xx-enter** 进入过渡的开始状态，元素被插入或者组件刚创建的时候生效，在下一帧后立刻被删除。
-- **xx-enter-active** 进入过渡的结束状态，元素被插入后即刻生效，在过渡完成后删除。
-- **xx-enter-to** 定义进入过渡的结束状态，在元素被插入后下一帧生效（同时`xx-enter`被删除）,在过渡/动画完成后删除。
-- **xx-leave** 离开过渡的开始状态，元素被删除时候出发，只应用一帧后立刻删除。
-- **xx-leave-active** 离开过渡的结束状态，元素删除后立即生效，离开过渡完成后删除。
-- **xx-leave-to** 定义离开过渡的结束状态，在离开过渡被出发下一帧后生效（同时`xx-leave`被删除），在过渡/动画完成后被删除。
+- **v-enter-from** 进入过渡的开始状态，元素被插入或者组件刚创建的时候生效，在下一帧后立刻被删除。
+- **v-enter-active** 进入过渡的结束状态，元素被插入后即刻生效，在过渡完成后删除。
+- **v-enter-to** 定义进入过渡的结束状态，在元素被插入后下一帧生效（同时 `v-enter-from` 被删除）,在过渡/动画完成后删除。
+- **v-leave-from** 离开过渡的开始状态，元素被删除时候出发，只应用一帧后立刻删除。
+- **v-leave-active** 离开过渡的结束状态，元素删除后立即生效，离开过渡完成后删除。
+- **v-leave-to** 定义离开过渡的结束状态，在离开过渡被出发下一帧后生效（同时 `v-leave-from` 被删除），在过渡/动画完成后被删除。
 
 ### 自定义动画类名
 
-通过`enter-class`，`enter-active-class`, `enter-to-class`, `leave-class`，`leave-active-class`, `leave-to-class`这 6 个属性，即可指定对应状态的类名，方便与 CSS 动画库做集成。
+可自定义以下类名:
 
-**自定义类名的权值大于普通类名，若对过渡组件指定了类型，则此状态的默认类名不会被触发**。
+- `appear-from-class`
+- `appear-active-class`
+- `appear-to-class`
+- `enter-from-class`
+- `enter-active-class`
+- `enter-to-class`
+- `leave-from-class`
+- `leave-active-class`
+- `leave-to-class`
+
+自定义类名的权值大于普通类名，若对过渡组件指定了类型，则此状态的默认类名不会被触发。
 
 ### 使用关键帧动画
 
-关键帧动画通过 CSS 定义`animation`属性与`@keyframes`来实现。
-一般只需需要在在`xx-enter-active`和`xx-leave-active`两个类上定义创建和销毁的动画。
+关键帧动画通过 CSS 定义 `animation` 属性与 `@keyframes` 来实现。
+一般只需需要在在 `xx-enter-active` 和 `xx-leave-active` 两个类上定义创建和销毁的动画。
 
 ### 指定过渡持续时间
 
-在`transition`组件上绑定`duration`属性即可指定过渡持续时间。单位为**毫秒**。
+在 `Transition` 组件上绑定 `duration` 属性即可指定过渡持续时间。单位为**毫秒**。
 
 ```vue
 <template>
@@ -110,7 +118,7 @@
 
 ### 初试渲染的过渡
 
-通过 appear 属性，可以设置元素初始渲染时候的过渡:
+通过 `appear` 属性，可以设置元素初始渲染时候的过渡:
 
 > 过渡只会在初始渲染时触发，重复改变其显示属性等不会触发过渡效果。
 
@@ -143,8 +151,8 @@
 
 我们可以在`transition`组件上添加**钩子函数**，来监听过渡的执行过程，在合适的时机执行绑定在钩子函数上的 JS 动画，来实现过渡效果。需要注意的是：
 
-- 当只存在 Javascript 动画时，必须在`leave`和`enter`中，调用其回调函数。否则他们将被同步调用，过渡会立即完成。(动画库会提供动画完成回调。比如`animejs`)
-- 对于只使用 Javascript 的元素，建议添加`:css="false"`来让 Vue 跳过对其的**CSS 检测**，同时也可以避免过渡过程受 CSS 影响。
+- 当只存在 JavaScript 动画时，必须在`leave`和`enter`中，调用其回调函数。否则他们将被同步调用，过渡会立即完成。(动画库会提供动画完成回调。比如`animejs`)
+- 对于只使用 JavaScript 的元素，建议添加`:css="false"`来让 Vue 跳过对其的**CSS 检测**，同时也可以避免过渡过程受 CSS 影响。
 
 代码示例：
 
@@ -304,7 +312,7 @@ export default {
   </button>
 
   <Transition
-    enter-active-name="animated slideInRight"
+    enter-active-class="animated slideInRight"
     leave-active-class="animated slideOutLeft"
   >
     <button
@@ -391,13 +399,13 @@ export default {
 
 ## 列表过渡
 
-`transition`组件经常用于处理单个、或者同一时间几个节点的运动。而对于整个列表的过渡，（比如使用 v-for）产生的，我们就需要使用`<transition-group></transition-group>`来让整个列表实现过渡。
+`Transition` 组件经常用于处理单个、或者同一时间几个节点的运动。而对于整个列表的过渡，（比如使用 v-for）产生的，我们就需要使用`TransitionGroup` 来让整个列表实现过渡。
 
 ### 基本说明
 
-1. 与`transition`不同的是，`<transition-group></transition-group>`组件会被真实地渲染为**HTML 节点**，默认会被渲染为`span`元素，通过指定**tag**属性可以改变渲染的元素。
+1. 与 `Transition` 不同的是，`TransitionGroup` 组件会被真实地渲染为**HTML 节点**，默认会被渲染为 `span` 元素，通过指定**tag** 属性可以改变渲染的元素。
 2. 过渡模式在**列表渲染**中是不可用的，因为我们不再相互切换特有的元素。
-3. `<transition-group></transition-group>`组件内部的元素必须有唯一的**key**值。
+3. `TransitionGroup` 组件内部的元素必须有唯一的**key**值。
 
 ### 进入离开列表
 
@@ -409,8 +417,8 @@ export default {
 
 `v-move`特性会在元素改变定位的过程中应用，和之前的类名一样，它也有如下特性：
 
-1. 可以通过`name`属性来自定义前缀。（若设置`name="xxx"`，对应存在类名`xxx-move`）
-2. 也可以通过`move-class`属性手动设置自定义类名。
+1. 可以通过 `name` 属性来自定义前缀。（若设置 `name="xxx" `，对应存在类名 `xxx-move` ）
+2. 也可以通过 `move-class` 属性手动设置自定义类名。
 
 > 绑定列表动画的时候可以绑定`data-index`属性到元素上，访问的时候获取索引
 
@@ -479,7 +487,7 @@ export default {
   }
 
   // 开始插入 和 移除结束的位置
-  &-enter,
+  &-enter-from,
   &-leave-to {
     opacity: 0;
     transform: translateY(50px);
@@ -501,7 +509,7 @@ export default {
 
 #### 过渡延迟时间
 
-`animated.css`内置了延时`1s`至`5s`的类，格式为`delay-1s`至`delay-5s`，当然根据自己需要，我们可以自定义别的`过渡延迟时间`，再将对应的类附加到动画元素上即可。
+`animated.css` 内置了延时 1s 至 5s 的类，格式为 `delay-1s `至 `delay-5s`，当然根据自己需要，我们可以自定义别的过渡延迟时间，再将对应的类附加到动画元素上即可。
 
 ```css
 .delay-10s {
@@ -511,7 +519,7 @@ export default {
 
 #### 过渡持续时间
 
-> `animate.css`中提供的动画，默认过渡持续时间为**1s**。
+> `animate.css` 中提供的动画，默认过渡持续时间为 **1s**。
 
 不过，它仍然提供了常用的几个持续时间类供我们使用。
 
@@ -524,13 +532,13 @@ export default {
 
 ## 集成 Animate.css
 
-首先，需要下载**animate.css**并引入。
+首先，需要下载 **animate.css** 并引入。
 
 ```bash
 yarn add animate.css
 ```
 
-然后在`main.js`中引用它。
+然后在 main.js 中引用它。
 
 ```js
 // main.js
@@ -539,9 +547,9 @@ import 'animate.css' // 这里animate.css是依赖的名字
 
 ### 基本使用
 
-使用`enter-active-class`和`leave-active-class`即可以指定`animate.css`提供的动画类为动画形式。
+使用 `enter-active-class` 和 `leave-active-class` 即可以指定 `animate.css` 提供的动画类为动画形式。
 
-**注意！！！** 需要在上面的两个类上加`animated`类，或者直接加在过渡元素上面。若为多个元素过渡或者列表过渡的时候，则建议把`animated`类加在 Vue 的**动画状态类**上。
+**注意！！！** 需要在上面的两个类上加 `animated` 类，或者直接加在过渡元素上面。若为多个元素过渡或者列表过渡的时候，则建议把 `animated` 类加在 Vue 的动画状态类上。
 
 ```vue
 <template>
@@ -579,7 +587,7 @@ import 'animate.css' // 这里animate.css是依赖的名字
 
 ## 结合 Vue-router
 
-> 使用了`vue-router`的项目在页面跳转间加上过渡效果，可以让页面切换更加平滑，提升用户体验。
+> 使用了 `vue-router` 的项目在页面跳转间加上过渡效果，可以让页面切换更加平滑，提升用户体验。
 
 ### 基本使用
 

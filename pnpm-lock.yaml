@@ -16,11 +16,11 @@ dependencies:
 
 devDependencies:
   '@ntnyq/eslint-config':
-    specifier: ^1.6.1
-    version: 1.6.1(eslint@8.38.0)(prettier@2.8.7)(typescript@5.0.4)
+    specifier: ^1.6.2
+    version: 1.6.2(eslint@8.38.0)(prettier@2.8.7)(typescript@5.0.4)
   '@ntnyq/prettier-config':
-    specifier: ^1.6.1
-    version: 1.6.1
+    specifier: ^1.6.2
+    version: 1.6.2
   '@types/animejs':
     specifier: ^3.1.7
     version: 3.1.7
@@ -390,8 +390,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@ntnyq/eslint-config-basic@1.6.1(@typescript-eslint/eslint-plugin@5.58.0)(@typescript-eslint/parser@5.58.0)(eslint@8.38.0):
-    resolution: {integrity: sha512-TbdvS0R+LPQbivHeFdCc3xi8wF3f58JC0zLxZ/O1TnWPz0vbXujMdajxpZR8MF13HkxO48exZbh7uXl1WjKwgg==}
+  /@ntnyq/eslint-config-basic@1.6.2(@typescript-eslint/eslint-plugin@5.58.0)(@typescript-eslint/parser@5.58.0)(eslint@8.38.0):
+    resolution: {integrity: sha512-99DMuTakUj0dLtOXGuGEY19FNpnv2b4ZGZGygTHjkUVwxoFJfBSd7HBMKFHoMNzbOgPCsX6gr65oaJZthdau4w==}
     dependencies:
       eslint-config-standard: 17.0.0(eslint-plugin-import@2.27.5)(eslint-plugin-n@15.7.0)(eslint-plugin-promise@6.1.1)(eslint@8.38.0)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.38.0)
@@ -415,8 +415,8 @@ packages:
       - supports-color
     dev: true
 
-  /@ntnyq/eslint-config-prettier@1.6.1(eslint@8.38.0)(prettier@2.8.7):
-    resolution: {integrity: sha512-b1eQ0ufbCs9lURBCmZEBx1ox6jhOb3VFtwePG28ZssajuE5s8heGCpGr6u70CzsFOxjvAvfw8sTbH2ouFEVQxw==}
+  /@ntnyq/eslint-config-prettier@1.6.2(eslint@8.38.0)(prettier@2.8.7):
+    resolution: {integrity: sha512-PpwVY+qNSXBzezOWumal6Lwh9A7FuDYQbHF6iadTPnrYLb+bYz7IRIriI+3Oe1ifd344PDk74MQ41HuPwRyUEg==}
     peerDependencies:
       prettier: ^2.8.4
     dependencies:
@@ -429,12 +429,12 @@ packages:
       - supports-color
     dev: true
 
-  /@ntnyq/eslint-config-typescript@1.6.1(eslint@8.38.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-ITAFOTOcKM3IE1JU/Oz7BsDGhYFhLEE0QyduDpMUN3bBDKCZkFx3cYEhSZYHgPId4d07gRDk6Nh292QvyKaJtw==}
+  /@ntnyq/eslint-config-typescript@1.6.2(eslint@8.38.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-dvjWzuRF5/HjAYQqRAGfkqbg61BUZCRDz1tcAhATCS/BfTz2oH+HGz1WjSG4lU8O+b64a5/78z9rlaTz9NK3WQ==}
     peerDependencies:
       typescript: ^4.0.0 || ^5.0.0
     dependencies:
-      '@ntnyq/eslint-config-basic': 1.6.1(@typescript-eslint/eslint-plugin@5.58.0)(@typescript-eslint/parser@5.58.0)(eslint@8.38.0)
+      '@ntnyq/eslint-config-basic': 1.6.2(@typescript-eslint/eslint-plugin@5.58.0)(@typescript-eslint/parser@5.58.0)(eslint@8.38.0)
       '@typescript-eslint/eslint-plugin': 5.58.0(@typescript-eslint/parser@5.58.0)(eslint@8.38.0)(typescript@5.0.4)
       '@typescript-eslint/parser': 5.58.0(eslint@8.38.0)(typescript@5.0.4)
       typescript: 5.0.4
@@ -445,10 +445,10 @@ packages:
       - supports-color
     dev: true
 
-  /@ntnyq/eslint-config-vue@1.6.1(eslint@8.38.0)(typescript@5.0.4):
-    resolution: {integrity: sha512-CljGIIG4PgbTow10pRZy6mGBrqeDFZCxGmQSLfFN9h9GIPB6SjeZo/zR+jygffmJeJpaOAgWOb7IcRfyqi63Fw==}
+  /@ntnyq/eslint-config-vue@1.6.2(eslint@8.38.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-a8CiB/ix4TjPKNxIMhboU8koy4N5+vPA3cOHM/rQ90UoloObGhjDLI6gLzs558UXkcrenb4YEyUpjvLoOJBJ0g==}
     dependencies:
-      '@ntnyq/eslint-config-typescript': 1.6.1(eslint@8.38.0)(typescript@5.0.4)
+      '@ntnyq/eslint-config-typescript': 1.6.2(eslint@8.38.0)(typescript@5.0.4)
       eslint-plugin-vue: 9.11.0(eslint@8.38.0)
       vue-eslint-parser: 9.1.1(eslint@8.38.0)
     transitivePeerDependencies:
@@ -459,11 +459,11 @@ packages:
       - typescript
     dev: true
 
-  /@ntnyq/eslint-config@1.6.1(eslint@8.38.0)(prettier@2.8.7)(typescript@5.0.4):
-    resolution: {integrity: sha512-kdJetPVzDyb32wJZ8Ve2il2IvWOCR+oNajTFeYqGHGzksQWOwhca0qpuoqCAAgx9QqeLRrb6jj8eBvOi78oUBA==}
+  /@ntnyq/eslint-config@1.6.2(eslint@8.38.0)(prettier@2.8.7)(typescript@5.0.4):
+    resolution: {integrity: sha512-5o4Rs6qD00h2gIEsW6TGuk9Fa0p67UY+NRkX/x894siEA4o6LpIlM2a808ZF18j/hLoqvBxx3RZC/tX9WLaKtg==}
     dependencies:
-      '@ntnyq/eslint-config-prettier': 1.6.1(eslint@8.38.0)(prettier@2.8.7)
-      '@ntnyq/eslint-config-vue': 1.6.1(eslint@8.38.0)(typescript@5.0.4)
+      '@ntnyq/eslint-config-prettier': 1.6.2(eslint@8.38.0)(prettier@2.8.7)
+      '@ntnyq/eslint-config-vue': 1.6.2(eslint@8.38.0)(typescript@5.0.4)
       '@typescript-eslint/eslint-plugin': 5.58.0(@typescript-eslint/parser@5.58.0)(eslint@8.38.0)(typescript@5.0.4)
       '@typescript-eslint/parser': 5.58.0(eslint@8.38.0)(typescript@5.0.4)
       eslint-plugin-eslint-comments: 3.2.0(eslint@8.38.0)
@@ -486,8 +486,8 @@ packages:
       - typescript
     dev: true
 
-  /@ntnyq/prettier-config@1.6.1:
-    resolution: {integrity: sha512-QhhmZjrdCAubna9NTZ/7/83EQbRd1qztGvyqD8fv6Td188x51onXax6kRiYgqe/M6xMtBrLVFP9Jbr9gF39uxQ==}
+  /@ntnyq/prettier-config@1.6.2:
+    resolution: {integrity: sha512-50GQApOhzfTXx1GZVZu9eVJ9f/bRxxcjS6ukwblerecnhXKpvQ4PNLkTHxJ/5ddUSR8QK6l30d/vpieFHL9eSg==}
     dev: true
 
   /@rollup/pluginutils@5.0.2:

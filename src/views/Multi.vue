@@ -24,7 +24,7 @@
           <button
             v-else
             :key="2"
-            style="background-color: green;"
+            style="background-color: green"
             type="button"
           >
             咦，我咋绿了
@@ -84,14 +84,14 @@
       <template #ctrl>
         <button
           @click="isShow = !isShow"
-          style="margin-right: 30px;"
+          style="margin-right: 30px"
           type="button"
         >
           切换显示
         </button>
         <button
           @click="isDefault = !isDefault"
-          style="margin-right: 30px;"
+          style="margin-right: 30px"
           type="button"
         >
           切换模式
@@ -114,7 +114,7 @@
           <button
             v-else
             :key="2"
-            style="background-color: green;"
+            style="background-color: green"
             type="button"
           >
             咦，我咋绿了
@@ -126,7 +126,7 @@
       <template #ctrl>
         <button
           @click="isShow = !isShow"
-          style="margin-right: 30px;"
+          style="margin-right: 30px"
           type="button"
         >
           切换显示
@@ -147,7 +147,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
+import { computed, ref } from 'vue'
 
 const num = ref(0)
 const isShow = ref(true)

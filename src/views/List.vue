@@ -4,7 +4,7 @@
       <template #ctrl>
         <button
           @click="add"
-          style="margin-right: 30px;"
+          style="margin-right: 30px"
           type="button"
         >
           添加
@@ -35,7 +35,7 @@
       <template #ctrl>
         <button
           @click="add"
-          style="margin-right: 30px;"
+          style="margin-right: 30px"
           type="button"
         >
           添加
@@ -105,7 +105,7 @@
             v-for="cell in cells"
             :key="cell.idx"
             class="cell"
-            >{{cell.number}}</span
+            >{{ cell.number }}</span
           >
         </TransitionGroup>
       </template>
@@ -135,7 +135,7 @@
             :data-index="index"
             class="str"
           >
-            {{item.lang}}
+            {{ item.lang }}
           </li>
         </TransitionGroup>
       </template>
@@ -149,8 +149,8 @@ import anime from 'animejs'
 
 const next = ref(10)
 const text = ref('')
-const array= ref([1, 2, 3, 4, 5, 6, 7, 8, 9])
-const array2= ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+const array = ref([1, 2, 3, 4, 5, 6, 7, 8, 9])
+const array2 = ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 const list = ref([
   { lang: 'HTML' },
   { lang: 'JavaScript' },
@@ -164,20 +164,18 @@ const list = ref([
   { lang: 'C#' },
   { lang: 'Lisp' },
   { lang: 'Markdown' },
-  { lang: 'Perl' }
+  { lang: 'Perl' },
 ])
-const cells = ref(Array.from({ length: 81 }, (_, idx)=> ({
-  idx,
-  number: idx % 9 + 1
-})))
-const computedList = computed(() => text.value.length > 0
-  ? list.value.filter(item => item.lang.toLowerCase().includes(text.value))
-  : []
+const cells = ref(Array.from({ length: 81 }, (_, idx) => ({ idx, number: (idx % 9) + 1 })))
+const computedList = computed(() =>
+  text.value.length > 0
+    ? list.value.filter(item => item.lang.toLowerCase().includes(text.value))
+    : [],
 )
 
 const random = () => Math.trunc(Math.random() * array.value.length)
 
-const add =  () => {
+const add = () => {
   array.value.splice(random(), 0, next.value++)
 }
 
@@ -186,15 +184,11 @@ const remove = () => {
 }
 
 const shuffle = () => {
-  array2.value.sort(() =>
-    Math.random() > 0.5 ? 1 : -1
-  )
+  array2.value.sort(() => (Math.random() > 0.5 ? 1 : -1))
 }
 
 const shuffle2 = () => {
-  cells.value.sort(() =>
-    Math.random() > 0.5 ? 1 : -1
-  )
+  cells.value.sort(() => (Math.random() > 0.5 ? 1 : -1))
 }
 
 const beforeEnter = (el: any) => {
@@ -207,7 +201,7 @@ const enter = (el: any, done: () => void) => {
     opacity: 1,
     height: '1.6em',
     duration: () => Number.parseInt(el.dataset.index ?? '') * 800,
-    complete: done
+    complete: done,
   })
 }
 
@@ -217,7 +211,7 @@ const leave = (el: any, done: () => void) => {
     opacity: 0,
     height: 0,
     duration: () => Number.parseInt(el.dataset.index ?? '') * 400,
-    complete: done
+    complete: done,
   })
 }
 </script>

@@ -74,11 +74,11 @@
 export default {
   name: 'Basic',
 
-  data () {
+  data() {
     return {
-      isShow: true
+      isShow: true,
     }
-  }
+  },
 }
 </script>
 
