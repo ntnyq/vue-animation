@@ -2,13 +2,14 @@
   "name": "vue-animation",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@8.2.0",
   "author": "ntnyq",
   "repository": "ntnyq/vue-animation",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
     "lint": "eslint .",
-    "release": "bumpp && pnpm publish"
+    "release": "bumpp"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
