@@ -1,182 +1,224 @@
 <template>
   <div class="list">
     <ls-section title="进入离开">
-      <button slot="ctrl"
-        @click="add"
-        style="margin-right: 30px;"
-        type="button">添加</button>
-      <button slot="ctrl"
-        @click="remove"
-        type="button">删除</button>
-      <transition-group slot="main"
-        name="list"
-        tag="p">
-        <!-- 不要用Inde做key 否则index不变的元素不会运动 -->
-        <span v-for="num in array"
-          :key="num"
-          class="num">{{num}}</span>
-      </transition-group>
+      <template #ctrl>
+        <button
+          @click="add"
+          style="margin-right: 30px;"
+          type="button"
+        >
+          添加
+        </button>
+        <button
+          @click="remove"
+          type="button"
+        >
+          删除
+        </button>
+      </template>
+      <template #main>
+        <TransitionGroup
+          name="list"
+          tag="p"
+        >
+          <span
+            v-for="num in array"
+            :key="num"
+            class="num"
+          >
+            {{ num }}
+          </span>
+        </TransitionGroup>
+      </template>
     </ls-section>
     <ls-section title="排序过渡">
-      <button slot="ctrl"
-        @click="add"
-        style="margin-right: 30px;"
-        type="button">添加</button>
-      <button slot="ctrl"
-        @click="remove"
-        type="button">删除</button>
-      <transition-group slot="main"
-        name="list2"
-        tag="p">
-        <!-- 不要用Inde做key 否则index不变的元素不会运动 -->
-        <span v-for="num in array"
-          :key="num"
-          class="num">{{num}}</span>
-      </transition-group>
+      <template #ctrl>
+        <button
+          @click="add"
+          style="margin-right: 30px;"
+          type="button"
+        >
+          添加
+        </button>
+        <button
+          @click="remove"
+          type="button"
+        >
+          删除
+        </button>
+      </template>
+      <template #main>
+        <TransitionGroup
+          name="list2"
+          tag="p"
+        >
+          <span
+            v-for="num in array"
+            :key="num"
+            class="num"
+          >
+            {{ num }}
+          </span>
+        </TransitionGroup>
+      </template>
     </ls-section>
     <ls-section title="乱序动画">
-      <button slot="ctrl"
-        @click="shuffle"
-        type="button">乱序</button>
-      <transition-group slot="main"
-        name="flip"
-        tag="p">
-        <!-- 不要用Inde做key 否则index不变的元素不会运动 -->
-        <span v-for="num in array2"
-          :key="num"
-          class="num">{{num}}</span>
-      </transition-group>
+      <template #ctrl>
+        <button
+          @click="shuffle"
+          type="button"
+        >
+          乱序
+        </button>
+      </template>
+      <template #main>
+        <TransitionGroup
+          name="flip"
+          tag="p"
+        >
+          <span
+            v-for="num in array2"
+            :key="num"
+            class="num"
+          >
+            {{ num }}
+          </span>
+        </TransitionGroup>
+      </template>
     </ls-section>
     <ls-section title="网格乱序">
-      <button slot="ctrl"
-        @click="shuffle2"
-        type="button">乱序</button>
-      <transition-group slot="main"
-        name="cell"
-        class="cells"
-        tag="div">
-        <!-- 不要用Inde做key 否则index不变的元素不会运动 -->
-        <span v-for="cell in cells"
-          :key="cell.idx"
-          class="cell">{{cell.number}}</span>
-      </transition-group>
+      <template #ctrl>
+        <button
+          @click="shuffle2"
+          type="button"
+        >
+          乱序
+        </button>
+      </template>
+      <template #main>
+        <TransitionGroup
+          name="cell"
+          class="cells"
+          tag="div"
+        >
+          <span
+            v-for="cell in cells"
+            :key="cell.idx"
+            class="cell"
+            >{{cell.number}}</span
+          >
+        </TransitionGroup>
+      </template>
     </ls-section>
     <ls-section title="js列表过渡">
-      <input v-model="text"
-        slot="ctrl"
-        placeholder="输入搜索"
-        type="text"
-        class="input">
-      <transition-group slot="main"
-        @before-enter="beforeEnter"
-        @enter="enter"
-        @leave="leave"
-        :css="false"
-        name="lang"
-        class="str-list"
-        tag="ul">
-        <li v-for="(item, index) in computedList"
-          :key="item.lang"
-          :data-index="index"
-          class="str">{{item.lang}}</li>
-      </transition-group>
+      <template #ctrl>
+        <input
+          v-model="text"
+          placeholder="输入搜索"
+          type="text"
+          class="input"
+        />
+      </template>
+      <template #main>
+        <TransitionGroup
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @leave="leave"
+          :css="false"
+          name="lang"
+          class="str-list"
+          tag="ul"
+        >
+          <li
+            v-for="(item, index) in computedList"
+            :key="item.lang"
+            :data-index="index"
+            class="str"
+          >
+            {{item.lang}}
+          </li>
+        </TransitionGroup>
+      </template>
     </ls-section>
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
+import { computed, ref } from 'vue'
 import anime from 'animejs'
 
-export default {
-  name: 'List',
+const next = ref(10)
+const text = ref('')
+const array= ref([1, 2, 3, 4, 5, 6, 7, 8, 9])
+const array2= ref([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+const list = ref([
+  { lang: 'HTML' },
+  { lang: 'JavaScript' },
+  { lang: 'CSS' },
+  { lang: 'Python' },
+  { lang: 'Julia' },
+  { lang: 'Ruby' },
+  { lang: 'Rust' },
+  { lang: 'C' },
+  { lang: 'C++' },
+  { lang: 'C#' },
+  { lang: 'Lisp' },
+  { lang: 'Markdown' },
+  { lang: 'Perl' }
+])
+const cells = ref(Array.from({ length: 81 }, (_, idx)=> ({
+  idx,
+  number: idx % 9 + 1
+})))
+const computedList = computed(() => text.value.length > 0
+  ? list.value.filter(item => item.lang.toLowerCase().includes(text.value))
+  : []
+)
 
-  computed: {
-    computedList () {
-      return this.text.length ? this.list.filter(item => item.lang.toLowerCase().includes(this.text)) : []
-    }
-  },
+const random = () => Math.trunc(Math.random() * array.value.length)
 
-  data () {
-    return {
-      cells: Array.apply(null, { length: 81 }).map((_, idx) => {
-        return {
-          idx,
-          number: idx % 9 + 1
-        }
-      }),
-      list: [
-        { lang: 'HTML' },
-        { lang: 'JavaScript' },
-        { lang: 'CSS' },
-        { lang: 'Python' },
-        { lang: 'Julia' },
-        { lang: 'Ruby' },
-        { lang: 'Rust' },
-        { lang: 'C' },
-        { lang: 'C++' },
-        { lang: 'C#' },
-        { lang: 'Lisp' },
-        { lang: 'Markdown' },
-        { lang: 'Perl' }
-      ],
-      array: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      array2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      next: 10,
-      isShow: true,
-      text: ''
-    }
-  },
+const add =  () => {
+  array.value.splice(random(), 0, next.value++)
+}
 
-  methods: {
-    random () {
-      return Math.floor(Math.random() * this.array.length)
-    },
+const remove = () => {
+  array.value.splice(random(), 1)
+}
 
-    add () {
-      this.array.splice(this.random(), 0, this.next++)
-    },
+const shuffle = () => {
+  array2.value.sort(() =>
+    Math.random() > 0.5 ? 1 : -1
+  )
+}
 
-    remove () {
-      this.array.splice(this.random(), 1)
-    },
+const shuffle2 = () => {
+  cells.value.sort(() =>
+    Math.random() > 0.5 ? 1 : -1
+  )
+}
 
-    shuffle () {
-      this.array2.sort(() =>
-        Math.random() > 0.5 ? 1 : -1
-      )
-    },
+const beforeEnter = (el: any) => {
+  el.style.cssText = 'height: 0; opacity: 0;'
+}
 
-    shuffle2 () {
-      this.cells.sort(() =>
-        Math.random() > 0.5 ? 1 : -1
-      )
-    },
+const enter = (el: any, done: () => void) => {
+  anime({
+    targets: el,
+    opacity: 1,
+    height: '1.6em',
+    duration: () => Number.parseInt(el.dataset.index ?? '') * 800,
+    complete: done
+  })
+}
 
-    beforeEnter (el) {
-      el.style.opacity = 0
-      el.style.height = 0
-    },
-
-    enter (el, done) {
-      anime({
-        targets: el,
-        opacity: 1,
-        height: '1.6em',
-        duration: () => parseInt(el.dataset.index) * 800,
-        complete: done
-      })
-    },
-
-    leave (el, done) {
-      anime({
-        targets: el,
-        opacity: 0,
-        height: 0,
-        duration: () => parseInt(el.dataset.index) * 400,
-        complete: done
-      })
-    }
-  }
+const leave = (el: any, done: () => void) => {
+  anime({
+    targets: el,
+    opacity: 0,
+    height: 0,
+    duration: () => Number.parseInt(el.dataset.index ?? '') * 400,
+    complete: done
+  })
 }
 </script>
 
@@ -200,7 +242,6 @@ export default {
 
   .list2,
   .list {
-
     // 插入与移除过程
     &-enter-active,
     &-leave-active {

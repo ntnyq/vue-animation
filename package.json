@@ -1,31 +1,35 @@
 {
-  "name": "vue-anime",
+  "name": "vue-animation",
   "version": "0.1.0",
   "private": true,
   "author": "ntnyq",
+  "repository": "ntnyq/vue-animation",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "repository": {
-    "url": "https://github.com/ntnyq/vue-animation.git",
-    "type": "git"
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint .",
+    "release": "bumpp && pnpm publish"
   },
   "dependencies": {
-    "animate.css": "^3.7.0",
-    "animejs": "^2.2.0",
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "animate.css": "^4.1.1",
+    "animejs": "^3.2.1",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-eslint": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
-    "@vue/eslint-config-standard": "^3.0.5",
-    "node-sass": "^4.9.3",
-    "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.17"
-  }
+    "@ntnyq/eslint-config": "^1.6.1",
+    "@ntnyq/prettier-config": "^1.6.1",
+    "@types/animejs": "^3.1.7",
+    "@types/node": "^18.15.11",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vue/tsconfig": "^0.1.3",
+    "bumpp": "^9.1.0",
+    "eslint": "^8.38.0",
+    "prettier": "^2.8.7",
+    "sass": "^1.62.0",
+    "typescript": "^5.0.4",
+    "unplugin-vue-components": "^0.24.1",
+    "vite": "^4.2.1"
+  },
+  "prettier": "@ntnyq/prettier-config"
 }

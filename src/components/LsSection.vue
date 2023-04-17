@@ -1,7 +1,7 @@
 <template>
   <div class="ls-section">
     <h2 class="ls-section-title">
-      <slot name="title">{{title}}</slot>
+      <slot name="title">{{ title }}</slot>
     </h2>
     <div class="ls-section-ctrl">
       <slot name="ctrl"></slot>
@@ -14,13 +14,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'LsSection',
-  props: {
-    title: String
+<script lang="ts" setup>
+defineProps({
+  title: {
+    type: String,
+    default: ''
   }
-}
+})
 </script>
 
 <style lang="scss">

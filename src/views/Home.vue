@@ -1,33 +1,29 @@
 <template>
   <div class="home">
     <ul class="nav">
-      <li v-for="item in navs"
+      <li
+        v-for="item in list"
         :key="item.name"
-        class="nav-item">
-        <router-link :to="`/${item.path}`">{{item.name}}</router-link>
+        class="nav-item"
+      >
+        <RouterLink :to="`/${item.path}`">{{item.name}}</RouterLink>
       </li>
     </ul>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Home',
+<script lang="ts" setup>
+import { ref } from 'vue'
 
-  data () {
-    return {
-      navs: [
-        { path: 'basic', name: '基础用法' },
-        { path: 'hook', name: '钩子函数' },
-        { path: 'multi', name: '多个元素' },
-        { path: 'list', name: '列表过渡' },
-        { path: 'anime', name: 'Animate' },
-        { path: 'router', name: '路由切换' },
-        { path: 'about', name: '关于我' }
-      ]
-    }
-  }
-}
+const list = ref([
+  { path: 'basic', name: '基础用法' },
+  { path: 'hook', name: '钩子函数' },
+  { path: 'multi', name: '多个元素' },
+  { path: 'list', name: '列表过渡' },
+  { path: 'anime', name: 'Animate' },
+  { path: 'router', name: '路由切换' },
+  { path: 'about', name: '关于我' }
+])
 </script>
 
 <style lang="scss">

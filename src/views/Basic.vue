@@ -1,48 +1,76 @@
 <template>
   <div class="basic">
     <ls-section title="初始过渡">
-      <button slot="ctrl"
-        @click="isShow = !isShow"
-        type="button">切换显示</button>
-      <transition slot="main"
-        appear
-        appear-active-class="animated fadeOutRightBig">
-        <ls-box v-show="isShow" />
-      </transition>
+      <template #ctrl>
+        <button
+          @click="isShow = !isShow"
+          type="button"
+        >
+          切换显示
+        </button>
+      </template>
+      <template #main>
+        <transition
+          appear
+          appear-active-class="animated fadeOutRightBig"
+        >
+          <ls-box v-show="isShow" />
+        </transition>
+      </template>
     </ls-section>
     <ls-section title="基本用法">
-      <button slot="ctrl"
-        @click="isShow = !isShow"
-        type="button">切换显示</button>
-      <transition slot="main"
-        name="fade">
-        <ls-box v-show="isShow" />
-      </transition>
+      <template #ctrl>
+        <button
+          @click="isShow = !isShow"
+          type="button"
+        >
+          切换显示
+        </button>
+      </template>
+      <template #main>
+        <transition name="fade">
+          <ls-box v-show="isShow" />
+        </transition>
+      </template>
     </ls-section>
     <ls-section title="自定义类名">
-      <button slot="ctrl"
-        @click="isShow = !isShow"
-        type="button">切换显示</button>
-      <transition enter-active-class="animated tada"
-        leave-active-class="animated bounceOutRight"
-        slot="main"
-        name="cus-animate">
-        <ls-box v-show="isShow" />
-      </transition>
+      <template #ctrl>
+        <button
+          @click="isShow = !isShow"
+          type="button"
+        >
+          切换显示
+        </button>
+      </template>
+      <template #main>
+        <transition
+          enter-active-class="animated tada"
+          leave-active-class="animated bounceOutRight"
+          name="cus-animate"
+        >
+          <ls-box v-show="isShow" />
+        </transition>
+      </template>
     </ls-section>
     <ls-section title="关键帧动画">
-      <button slot="ctrl"
-        @click="isShow = !isShow"
-        type="button">切换显示</button>
-      <transition slot="main"
-        name="fold">
-        <ls-box v-show="isShow" />
-      </transition>
+      <template #ctrl>
+        <button
+          @click="isShow = !isShow"
+          type="button"
+        >
+          切换显示
+        </button>
+      </template>
+      <template #main>
+        <transition name="fold">
+          <ls-box v-show="isShow" />
+        </transition>
+      </template>
     </ls-section>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'Basic',
 
