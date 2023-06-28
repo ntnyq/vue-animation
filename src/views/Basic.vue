@@ -1,6 +1,12 @@
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const isShow = ref(true)
+</script>
+
 <template>
   <div class="basic">
-    <ls-section title="初始过渡">
+    <LsSection title="初始过渡">
       <template #ctrl>
         <button
           @click="isShow = !isShow"
@@ -10,15 +16,15 @@
         </button>
       </template>
       <template #main>
-        <transition
-          appear
+        <Transition
           appear-active-class="animated fadeOutRightBig"
+          appear
         >
-          <ls-box v-show="isShow" />
-        </transition>
+          <LsBox v-show="isShow" />
+        </Transition>
       </template>
-    </ls-section>
-    <ls-section title="基本用法">
+    </LsSection>
+    <LsSection title="基本用法">
       <template #ctrl>
         <button
           @click="isShow = !isShow"
@@ -28,12 +34,12 @@
         </button>
       </template>
       <template #main>
-        <transition name="fade">
-          <ls-box v-show="isShow" />
-        </transition>
+        <Transition name="fade">
+          <LsBox v-show="isShow" />
+        </Transition>
       </template>
-    </ls-section>
-    <ls-section title="自定义类名">
+    </LsSection>
+    <LsSection title="自定义类名">
       <template #ctrl>
         <button
           @click="isShow = !isShow"
@@ -43,16 +49,16 @@
         </button>
       </template>
       <template #main>
-        <transition
+        <Transition
           enter-active-class="animated tada"
           leave-active-class="animated bounceOutRight"
           name="cus-animate"
         >
-          <ls-box v-show="isShow" />
-        </transition>
+          <LsBox v-show="isShow" />
+        </Transition>
       </template>
-    </ls-section>
-    <ls-section title="关键帧动画">
+    </LsSection>
+    <LsSection title="关键帧动画">
       <template #ctrl>
         <button
           @click="isShow = !isShow"
@@ -62,25 +68,13 @@
         </button>
       </template>
       <template #main>
-        <transition name="fold">
-          <ls-box v-show="isShow" />
-        </transition>
+        <Transition name="fold">
+          <LsBox v-show="isShow" />
+        </Transition>
       </template>
-    </ls-section>
+    </LsSection>
   </div>
 </template>
-
-<script lang="ts">
-export default {
-  name: 'Basic',
-
-  data() {
-    return {
-      isShow: true,
-    }
-  },
-}
-</script>
 
 <style lang="scss">
 .basic {
@@ -94,7 +88,7 @@ export default {
   transition: all 0.5s ease;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-active {
   opacity: 0;
 }
@@ -107,6 +101,7 @@ export default {
   animation-name: fold-out;
   animation-duration: 1s;
 }
+
 @keyframes fold-in {
   0% {
     opacity: 0;
@@ -125,6 +120,7 @@ export default {
     transform: scale(1) rotate(0deg);
   }
 }
+
 @keyframes fold-out {
   0% {
     opacity: 1;

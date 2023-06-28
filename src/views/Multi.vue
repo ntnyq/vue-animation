@@ -1,6 +1,15 @@
+<script lang="ts" setup>
+import { computed, ref } from 'vue'
+
+const num = ref(0)
+const isShow = ref(true)
+const isDefault = ref(true)
+const color = computed(() => ['blue', 'green', 'red'][num.value % 3])
+</script>
+
 <template>
   <div class="multi">
-    <ls-section title="2个Button">
+    <LsSection title="2个Button">
       <template #ctrl>
         <button
           @click="isShow = !isShow"
@@ -31,8 +40,8 @@
           </button>
         </Transition>
       </template>
-    </ls-section>
-    <ls-section title="3个Button">
+    </LsSection>
+    <LsSection title="3个Button">
       <template #ctrl>
         <button
           @click="num++"
@@ -48,15 +57,15 @@
         >
           <button
             key="blue"
-            type="button"
             :style="{ backgroundColor: ['green', 'red', 'blur'][num % 3] }"
+            type="button"
           >
             我是按钮{{ num + 1 }}
           </button>
         </Transition>
       </template>
-    </ls-section>
-    <ls-section title="1个Button">
+    </LsSection>
+    <LsSection title="1个Button">
       <template #ctrl>
         <button
           @click="num++"
@@ -79,8 +88,8 @@
           </button>
         </Transition>
       </template>
-    </ls-section>
-    <ls-section title="过渡模式">
+    </LsSection>
+    <LsSection title="过渡模式">
       <template #ctrl>
         <button
           @click="isShow = !isShow"
@@ -100,9 +109,9 @@
       </template>
       <template #main>
         <Transition
+          :mode="isDefault ? 'in-out' : 'out-in'"
           enter-active-class="animated bounceInRight"
           leave-active-class="animated bounceOutLeft"
-          :mode="isDefault ? 'in-out' : 'out-in'"
         >
           <button
             v-if="isShow"
@@ -121,8 +130,8 @@
           </button>
         </Transition>
       </template>
-    </ls-section>
-    <ls-section title="多组件过渡">
+    </LsSection>
+    <LsSection title="多组件过渡">
       <template #ctrl>
         <button
           @click="isShow = !isShow"
@@ -142,18 +151,9 @@
           <BlueCircle v-else />
         </Transition>
       </template>
-    </ls-section>
+    </LsSection>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { computed, ref } from 'vue'
-
-const num = ref(0)
-const isShow = ref(true)
-const isDefault = ref(true)
-const color = computed(() => ['blue', 'green', 'red'][num.value % 3])
-</script>
 
 <style lang="scss">
 .multi {

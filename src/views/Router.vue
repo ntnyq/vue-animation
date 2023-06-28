@@ -1,24 +1,9 @@
 <template>
-  <div class="router">
-    <ls-section title="路由切换">
+  <div class="flex justify-center items-center flex-auto">
+    <LsSection title="路由切换">
       <template #main>
-        <p class="text">路由切换已加入过渡效果。</p>
+        <p class="pt-20 text-center text-lg">路由切换已加入过渡效果。</p>
       </template>
-    </ls-section>
+    </LsSection>
   </div>
 </template>
-
-<style lang="scss">
-.router {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-
-  .text {
-    padding-top: 80px;
-    text-align: center;
-    font-size: 20px;
-  }
-}
-</style>

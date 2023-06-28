@@ -1,17 +1,3 @@
-<template>
-  <div class="home">
-    <ul class="nav">
-      <li
-        v-for="item in list"
-        :key="item.name"
-        class="nav-item"
-      >
-        <RouterLink :to="`/${item.path}`">{{ item.name }}</RouterLink>
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { ref } from 'vue'
 
@@ -25,6 +11,20 @@ const list = ref([
   { path: 'about', name: '关于我' },
 ])
 </script>
+
+<template>
+  <div class="home">
+    <ul class="nav">
+      <li
+        v-for="item in list"
+        :key="item.name"
+        class="nav-item"
+      >
+        <RouterLink :to="`/${item.path}`">{{ item.name }}</RouterLink>
+      </li>
+    </ul>
+  </div>
+</template>
 
 <style lang="scss">
 .home {

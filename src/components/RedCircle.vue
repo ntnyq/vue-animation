@@ -1,12 +1,3 @@
 <template>
-  <div class="red-circle"></div>
+  <div class="w-20 h-20 rounded-full bg-red"></div>
 </template>
-
-<style lang="scss">
-.red-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: red;
-}
-</style>

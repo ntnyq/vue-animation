@@ -1,60 +1,26 @@
 <template>
-  <h1>Vue与动画</h1>
-  <RouterLink
-    to="/"
-    class="back"
+  <div
+    class="relative flex min-w-xs max-w-2xl min-h-screen flex-col p-4 mx-auto font-medium text-[#666]"
   >
-    🔙
-  </RouterLink>
-  <div class="container">
-    <RouterView v-slot="{ Component }">
-      <Transition
-        enter-active-class="animated fadeIn"
-        leave-active-class="animated fadeOut"
-        mode="out-in"
-      >
-        <KeepAlive>
-          <Component :is="Component" />
-        </KeepAlive>
-      </Transition>
-    </RouterView>
+    <h1 class="text-center text-4xl">Vue与动画</h1>
+    <RouterLink
+      to="/"
+      class="fixed top-4 left-4 z40 block text-50px leading-1em"
+    >
+      🔙
+    </RouterLink>
+    <div class="flex flex-auto">
+      <RouterView v-slot="{ Component }">
+        <Transition
+          enter-active-class="animated fadeIn"
+          leave-active-class="animated fadeOut"
+          mode="out-in"
+        >
+          <KeepAlive>
+            <Component :is="Component" />
+          </KeepAlive>
+        </Transition>
+      </RouterView>
+    </div>
   </div>
 </template>
-
-<style lang="scss">
-#app {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  max-width: 720px;
-  min-width: 320px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 15px;
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 2;
-  color: #666;
-  overflow-x: hidden;
-
-  h1 {
-    text-align: center;
-  }
-
-  .container {
-    display: flex;
-    flex: 1;
-  }
-
-  .back {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 999;
-    display: block;
-    line-height: 1;
-    font-size: 50px;
-  }
-}
-</style>

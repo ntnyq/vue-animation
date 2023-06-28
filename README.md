@@ -124,9 +124,9 @@
 
 ```vue
 <template>
-  <transition appear>
+  <Transition appear>
     <!-- ... -->
-  </transition>
+  </Transition>
 </template>
 ```
 
@@ -135,10 +135,10 @@
 ```vue
 <template>
   <Transition
-    appear
     appear-class="custom-appear-class"
     appear-to-class="custom-appear-to-class"
     appear-active-class="custom-appear-active-class"
+    appear
   >
     <!-- ... -->
   </Transition>
@@ -175,7 +175,7 @@
     @after-leave="afterLeave"
     @leave-cancelled="leaveCancelled"
   >
-    <ls-box v-show="isShow" />
+    <LsBox v-show="isShow" />
   </Transition>
 </template>
 ```
@@ -186,9 +186,9 @@ const { log } = window.console
 export default {
   name: 'Hook',
 
-  data () {
+  data() {
     return {
-      isShow: true
+      isShow: true,
     }
   },
 
@@ -196,49 +196,49 @@ export default {
     //* 进入过渡 */
 
     // 设置进入过渡之前的状态
-    beforeEnter (el) {
+    beforeEnter(el) {
       log('> beforeEnter')
     },
 
     // 设置进入过渡完成时的状态
-    enter (el, done) {
+    enter(el, done) {
       log('> enter')
       done()
     },
 
     // 设置进入过渡完成后的状态
-    afterEnter (el) {
+    afterEnter(el) {
       log('> afterEnter')
     },
 
     // 只用于v-show中
-    enterCancelled (el) {
+    enterCancelled(el) {
       log('> enterCancelled')
     },
 
     //* 离开过渡 */
 
     // 设置离开过渡之前的状态
-    beforeLeave (el) {
+    beforeLeave(el) {
       log('> beforeLeave')
     },
 
     // 设置离开过渡完成时的状态
-    leave (el, done) {
+    leave(el, done) {
       log('> leave')
       done()
     },
 
     // 设置离开过渡完成后的状态
-    afterLeave (el) {
+    afterLeave(el) {
       log('> afterLeave')
     },
 
     // 只用于v-show中
-    leaveCancelled (el) {
+    leaveCancelled(el) {
       log('> leaveCancelled')
-    }
-  }
+    },
+  },
 }
 ```
 
@@ -303,6 +303,21 @@ export default {
 有时候，我们只需要给元素绑定`key`值，若`key`值发生变化，也可以触发过渡效果。
 
 ```vue
+<script>
+export default {
+  computed: {
+    text() {
+      return ['活动未开始', '活动进行中', '活动已完成'][this.status % 3]
+    },
+  },
+  data() {
+    return {
+      status: 0,
+    }
+  },
+}
+</script>
+
 <template>
   <button
     @click="status++"
@@ -323,21 +338,6 @@ export default {
     </button>
   </Transition>
 </template>
-
-<script>
-export default {
-  computed: {
-    text () {
-      return ['活动未开始', '活动进行中', '活动已完成'][this.status % 3]
-    }
-  },
-  data () {
-    return {
-      status: 0
-    }
-  }
-}
-</script>
 ```
 
 ### 过渡模式
@@ -354,6 +354,30 @@ export default {
 > Vue-cli 创建的项目模板，使用的是 _runtime-only_ 的环境，不支持使用`template`的模板自定义组件。
 
 ```vue
+<script>
+import RedCircle from '@/components/Circle/RedCircle'
+import BlueCircle from '@/components/Circle/BlueCircle'
+
+export default {
+  components: {
+    RedCircle,
+    BlueCircle,
+  },
+
+  computed: {
+    circle() {
+      return this.isShow ? 'red-circle' : 'blue-circle'
+    },
+  },
+
+  data() {
+    return {
+      isShow: true,
+    }
+  },
+}
+</script>
+
 <template>
   <button
     @click="isShow = !isShow"
@@ -363,38 +387,14 @@ export default {
     切换显示
   </button>
 
-  <transition
+  <Transition
     enter-active-class="animated bounceInRight"
     leave-active-class="animated bounceOutLeft"
     mode="out-in"
   >
-    <component :is="circle"></component>
-  </transition>
+    <Component :is="circle"></Component>
+  </Transition>
 </template>
-
-<script>
-import RedCircle from '@/components/Circle/RedCircle'
-import BlueCircle from '@/components/Circle/BlueCircle'
-
-export default {
-  components: {
-    RedCircle,
-    BlueCircle
-  },
-
-  computed: {
-    circle () {
-      return this.isShow ? 'red-circle' : 'blue-circle'
-    }
-  },
-
-  data () {
-    return {
-      isShow: true
-    }
-  }
-}
-</script>
 ```
 
 ## 列表过渡
@@ -424,7 +424,7 @@ export default {
 
 ```vue
 <template>
-  <ls-section title="排序过渡">
+  <LsSection title="排序过渡">
     <button
       @click="add"
       style="margin-right: 30px;"
@@ -450,31 +450,31 @@ export default {
         {{ num }}
       </span>
     </TransitionGroup>
-  </ls-section>
+  </LsSection>
 </template>
 ```
 
 ```js
 export default {
-  data () {
+  data() {
     return {
       array2: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     }
   },
 
   methods: {
-    random () {
+    random() {
       return Math.floor(Math.random() * this.array.length)
     },
 
-    add () {
+    add() {
       this.array.splice(this.random(), 0, this.next++)
     },
 
-    remove () {
+    remove() {
       this.array.splice(this.random(), 1)
-    }
-  }
+    },
+  },
 }
 ```
 
@@ -483,7 +483,7 @@ export default {
   // 插入与移除过程
   &-enter-active,
   &-leave-active {
-      transition: all 1s;
+    transition: all 1s;
   }
 
   // 开始插入 和 移除结束的位置
@@ -513,7 +513,7 @@ export default {
 
 ```css
 .delay-10s {
-  animation-delay: 10s
+  animation-delay: 10s;
 }
 ```
 
@@ -562,8 +562,9 @@ import 'animate.css' // 这里animate.css是依赖的名字
 
   <Transition
     enter-active-class="zoomIn"
-    leave-active-class="zoomOut">
-    <ls-box
+    leave-active-class="zoomOut"
+  >
+    <LsBox
       v-show="isShow"
       class="animated"
     />
@@ -580,7 +581,7 @@ import 'animate.css' // 这里animate.css是依赖的名字
     enter-active-class="animated zoomIn"
     leave-active-class="animated zoomOut"
   >
-    <ls-box v-show="isShow" />
+    <LsBox v-show="isShow" />
   </Transition>
 </template>
 ```
@@ -620,8 +621,8 @@ const router = createRouter({
       component: () => import('@/views/page1'),
       meta: {
         transitionInName: 'fadeIn',
-        transitionOutName: 'fadeOut'
-      }
+        transitionOutName: 'fadeOut',
+      },
     },
 
     {
@@ -630,10 +631,10 @@ const router = createRouter({
       component: () => import('@/views/page2'),
       meta: {
         transitionInName: 'slideInLeft',
-        transitionOutName: 'slideOutRight'
-      }
-    }
-  ]
+        transitionOutName: 'slideOutRight',
+      },
+    },
+  ],
 })
 ```
 
@@ -641,19 +642,19 @@ const router = createRouter({
 // App.vue 或者别的包含transition组件包括了router-view的文件
 export default {
   name: 'App',
-  data () {
+  data() {
     return {
       trsInName: 'fadeIn',
-      trsOutName: 'fadeOut'
+      trsOutName: 'fadeOut',
     }
   },
   watch: {
-    route (to) {
+    route(to) {
       const { transitionInName, transitionOutName } = to.meta
       transitionInName && (this.trsInName = transitionInName)
       transitionOutName && (this.trsOutName = transitionOutName)
-    }
-  }
+    },
+  },
 }
 ```
 

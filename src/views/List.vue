@@ -1,148 +1,3 @@
-<template>
-  <div class="list">
-    <ls-section title="进入离开">
-      <template #ctrl>
-        <button
-          @click="add"
-          style="margin-right: 30px"
-          type="button"
-        >
-          添加
-        </button>
-        <button
-          @click="remove"
-          type="button"
-        >
-          删除
-        </button>
-      </template>
-      <template #main>
-        <TransitionGroup
-          name="list"
-          tag="p"
-        >
-          <span
-            v-for="num in array"
-            :key="num"
-            class="num"
-          >
-            {{ num }}
-          </span>
-        </TransitionGroup>
-      </template>
-    </ls-section>
-    <ls-section title="排序过渡">
-      <template #ctrl>
-        <button
-          @click="add"
-          style="margin-right: 30px"
-          type="button"
-        >
-          添加
-        </button>
-        <button
-          @click="remove"
-          type="button"
-        >
-          删除
-        </button>
-      </template>
-      <template #main>
-        <TransitionGroup
-          name="list2"
-          tag="p"
-        >
-          <span
-            v-for="num in array"
-            :key="num"
-            class="num"
-          >
-            {{ num }}
-          </span>
-        </TransitionGroup>
-      </template>
-    </ls-section>
-    <ls-section title="乱序动画">
-      <template #ctrl>
-        <button
-          @click="shuffle"
-          type="button"
-        >
-          乱序
-        </button>
-      </template>
-      <template #main>
-        <TransitionGroup
-          name="flip"
-          tag="p"
-        >
-          <span
-            v-for="num in array2"
-            :key="num"
-            class="num"
-          >
-            {{ num }}
-          </span>
-        </TransitionGroup>
-      </template>
-    </ls-section>
-    <ls-section title="网格乱序">
-      <template #ctrl>
-        <button
-          @click="shuffle2"
-          type="button"
-        >
-          乱序
-        </button>
-      </template>
-      <template #main>
-        <TransitionGroup
-          name="cell"
-          class="cells"
-          tag="div"
-        >
-          <span
-            v-for="cell in cells"
-            :key="cell.idx"
-            class="cell"
-            >{{ cell.number }}</span
-          >
-        </TransitionGroup>
-      </template>
-    </ls-section>
-    <ls-section title="js列表过渡">
-      <template #ctrl>
-        <input
-          v-model="text"
-          placeholder="输入搜索"
-          type="text"
-          class="input"
-        />
-      </template>
-      <template #main>
-        <TransitionGroup
-          @before-enter="beforeEnter"
-          @enter="enter"
-          @leave="leave"
-          :css="false"
-          name="lang"
-          class="str-list"
-          tag="ul"
-        >
-          <li
-            v-for="(item, index) in computedList"
-            :key="item.lang"
-            :data-index="index"
-            class="str"
-          >
-            {{ item.lang }}
-          </li>
-        </TransitionGroup>
-      </template>
-    </ls-section>
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import anime from 'animejs'
@@ -215,6 +70,151 @@ const leave = (el: any, done: () => void) => {
   })
 }
 </script>
+
+<template>
+  <div class="list">
+    <LsSection title="进入离开">
+      <template #ctrl>
+        <button
+          @click="add"
+          style="margin-right: 30px"
+          type="button"
+        >
+          添加
+        </button>
+        <button
+          @click="remove"
+          type="button"
+        >
+          删除
+        </button>
+      </template>
+      <template #main>
+        <TransitionGroup
+          name="list"
+          tag="p"
+        >
+          <span
+            v-for="num in array"
+            :key="num"
+            class="num"
+          >
+            {{ num }}
+          </span>
+        </TransitionGroup>
+      </template>
+    </LsSection>
+    <LsSection title="排序过渡">
+      <template #ctrl>
+        <button
+          @click="add"
+          style="margin-right: 30px"
+          type="button"
+        >
+          添加
+        </button>
+        <button
+          @click="remove"
+          type="button"
+        >
+          删除
+        </button>
+      </template>
+      <template #main>
+        <TransitionGroup
+          name="list2"
+          tag="p"
+        >
+          <span
+            v-for="num in array"
+            :key="num"
+            class="num"
+          >
+            {{ num }}
+          </span>
+        </TransitionGroup>
+      </template>
+    </LsSection>
+    <LsSection title="乱序动画">
+      <template #ctrl>
+        <button
+          @click="shuffle"
+          type="button"
+        >
+          乱序
+        </button>
+      </template>
+      <template #main>
+        <TransitionGroup
+          name="flip"
+          tag="p"
+        >
+          <span
+            v-for="num in array2"
+            :key="num"
+            class="num"
+          >
+            {{ num }}
+          </span>
+        </TransitionGroup>
+      </template>
+    </LsSection>
+    <LsSection title="网格乱序">
+      <template #ctrl>
+        <button
+          @click="shuffle2"
+          type="button"
+        >
+          乱序
+        </button>
+      </template>
+      <template #main>
+        <TransitionGroup
+          name="cell"
+          class="cells"
+          tag="div"
+        >
+          <span
+            v-for="cell in cells"
+            :key="cell.idx"
+            class="cell"
+            >{{ cell.number }}</span
+          >
+        </TransitionGroup>
+      </template>
+    </LsSection>
+    <LsSection title="js列表过渡">
+      <template #ctrl>
+        <input
+          v-model="text"
+          placeholder="输入搜索"
+          type="text"
+          class="input"
+        />
+      </template>
+      <template #main>
+        <TransitionGroup
+          @before-enter="beforeEnter"
+          @enter="enter"
+          @leave="leave"
+          :css="false"
+          name="lang"
+          class="str-list"
+          tag="ul"
+        >
+          <li
+            v-for="(item, index) in computedList"
+            :key="item.lang"
+            :data-index="index"
+            class="str"
+          >
+            {{ item.lang }}
+          </li>
+        </TransitionGroup>
+      </template>
+    </LsSection>
+  </div>
+</template>
 
 <style lang="scss">
 .list {

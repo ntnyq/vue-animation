@@ -1,33 +1,9 @@
 <template>
-  <div class="about">
-    <div class="card">
+  <div class="flex justify-center items-center flex-auto">
+    <div
+      class="relative max-w-xl py-5 px-12 text-lg rounded-10px text-white select-none bg-black shadow md:py-12 md:px-25 md:text-xl"
+    >
       <p>Hello, 我是ntnyq。</p>
     </div>
   </div>
 </template>
-
-<style lang="scss">
-.about {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-
-  .card {
-    position: relative;
-    max-width: 600px;
-    padding: 50px 100px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    font-size: 24px;
-    color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    user-select: none;
-
-    @media screen and (max-width: 750px) {
-      padding: 20px 50px;
-      font-size: 20px;
-    }
-  }
-}
-</style>

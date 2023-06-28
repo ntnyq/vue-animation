@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+defineProps({
+  title: {
+    type: String,
+    default: '',
+  },
+})
+</script>
+
 <template>
   <div class="ls-section">
     <h2 class="ls-section-title">
@@ -13,15 +22,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-defineProps({
-  title: {
-    type: String,
-    default: '',
-  },
-})
-</script>
 
 <style lang="scss">
 .ls-section {

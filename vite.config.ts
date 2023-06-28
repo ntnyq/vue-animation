@@ -1,6 +1,7 @@
 import { URL, fileURLToPath } from 'node:url'
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import unocss from 'unocss/vite'
 import vueComponents from 'unplugin-vue-components/vite'
 
 export default defineConfig({
@@ -17,6 +18,12 @@ export default defineConfig({
   build: {
     cssCodeSplit: false,
     manifest: true,
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'chunk-[hash].js',
+        entryFileNames: 'entry-[hash].js',
+      },
+    },
   },
 
   server: {
@@ -25,9 +32,10 @@ export default defineConfig({
 
   plugins: [
     vue(),
+    unocss(),
+    splitVendorChunkPlugin(),
     vueComponents({
       dts: 'src/components.d.ts',
     }),
-    splitVendorChunkPlugin(),
   ],
 })
