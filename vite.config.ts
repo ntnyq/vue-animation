@@ -1,8 +1,8 @@
-import { URL, fileURLToPath } from 'node:url'
-import { defineConfig, splitVendorChunkPlugin } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import unocss from 'unocss/vite'
-import vueComponents from 'unplugin-vue-components/vite'
+import { fileURLToPath, URL } from 'node:url'
+import Vue from '@vitejs/plugin-vue'
+import UnoCSS from 'unocss/vite'
+import VueComponents from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
   resolve: {
@@ -16,8 +16,6 @@ export default defineConfig({
   },
 
   build: {
-    cssCodeSplit: false,
-    manifest: true,
     rollupOptions: {
       output: {
         chunkFileNames: 'chunk-[hash].js',
@@ -30,11 +28,20 @@ export default defineConfig({
     open: true,
   },
 
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
+    },
+  },
+
   plugins: [
-    vue(),
-    unocss(),
-    splitVendorChunkPlugin(),
-    vueComponents({
+    Vue(),
+
+    UnoCSS(),
+
+    VueComponents({
       dts: 'src/components.d.ts',
     }),
   ],

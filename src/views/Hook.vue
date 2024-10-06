@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import anime from 'animejs'
+import { ref } from 'vue'
 
 type AnimeDone = () => void
 

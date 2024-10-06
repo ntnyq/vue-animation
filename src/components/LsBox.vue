@@ -10,8 +10,8 @@ defineProps({
 <template>
   <div
     :style="{ backgroundColor: bgColor }"
-    class="w-25 h-25 rounded-3px"
+    class="h-25 w-25 rounded-3px"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>

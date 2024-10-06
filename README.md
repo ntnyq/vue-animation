@@ -112,7 +112,7 @@
 
 ```vue
 <template>
-  <Transition :duration="{ entry: 2000, leave: 3000 }"></Transition>
+  <Transition :duration="{ entry: 2000, leave: 3000 }"/>
 </template>
 ```
 
@@ -355,8 +355,8 @@ export default {
 
 ```vue
 <script>
-import RedCircle from '@/components/Circle/RedCircle'
 import BlueCircle from '@/components/Circle/BlueCircle'
+import RedCircle from '@/components/Circle/RedCircle'
 
 export default {
   components: {
@@ -392,7 +392,7 @@ export default {
     leave-active-class="animated bounceOutLeft"
     mode="out-in"
   >
-    <Component :is="circle"></Component>
+    <Component :is="circle"/>
   </Transition>
 </template>
 ```

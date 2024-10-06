@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
 import anime from 'animejs'
+import { computed, ref } from 'vue'
 
 const next = ref(10)
 const text = ref('')

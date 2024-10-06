@@ -1,7 +1,0 @@
-{
-  "root": true,
-  "extends": ["@ntnyq"],
-  "rules": {
-    "vue/no-static-inline-styles": "off"
-  }
-}

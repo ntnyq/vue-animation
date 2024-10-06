@@ -1,11 +1,11 @@
 <template>
   <div
-    class="relative flex min-w-xs max-w-2xl min-h-screen flex-col p-4 mx-auto font-medium text-[#666]"
+    class="relative mx-auto max-w-2xl min-h-screen min-w-xs flex flex-col p-4 text-[#666] font-medium"
   >
     <h1 class="text-center text-4xl">Vue与动画</h1>
     <RouterLink
       to="/"
-      class="fixed top-4 left-4 z40 block text-50px leading-1em"
+      class="fixed left-4 top-4 z40 block text-50px leading-1em"
     >
       🔙
     </RouterLink>

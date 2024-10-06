@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-center items-center flex-auto">
+  <div class="flex flex-auto items-center justify-center">
     <div
-      class="relative max-w-xl py-5 px-12 text-lg rounded-10px text-white select-none bg-black shadow md:py-12 md:px-25 md:text-xl"
+      class="relative max-w-xl select-none rounded-10px bg-black px-12 py-5 text-lg text-white shadow md:px-25 md:py-12 md:text-xl"
     >
       <p>Hello, 我是ntnyq。</p>
     </div>

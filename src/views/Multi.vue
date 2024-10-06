@@ -56,6 +56,7 @@ const color = computed(() => ['blue', 'green', 'red'][num.value % 3])
           leave-active-class="animated slideOutLeft"
         >
           <button
+            v-if="isShow"
             key="blue"
             :style="{ backgroundColor: ['green', 'red', 'blur'][num % 3] }"
             type="button"

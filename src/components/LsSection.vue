@@ -13,11 +13,11 @@ defineProps({
       <slot name="title">{{ title }}</slot>
     </h2>
     <div class="ls-section-ctrl">
-      <slot name="ctrl"></slot>
+      <slot name="ctrl" />
     </div>
     <div class="ls-section-main">
       <div class="ls-section-main-inner">
-        <slot name="main"></slot>
+        <slot name="main" />
       </div>
     </div>
   </div>

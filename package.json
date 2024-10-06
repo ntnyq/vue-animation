@@ -1,46 +1,47 @@
 {
   "name": "vue-animation",
+  "type": "module",
   "version": "0.1.1",
   "private": true,
-  "packageManager": "pnpm@8.6.5",
+  "packageManager": "pnpm@9.12.0",
   "author": "ntnyq",
   "repository": "ntnyq/vue-animation",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
     "lint": "eslint .",
-    "prepare": "husky install",
+    "prepare": "husky",
     "release": "bumpp",
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@unocss/reset": "^0.53.4",
+    "@unocss/reset": "^0.63.3",
     "animate.css": "^4.1.1",
-    "animejs": "^3.2.1",
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.2"
+    "animejs": "^3.2.2",
+    "vue": "^3.5.11",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@ntnyq/eslint-config": "^1.9.0",
-    "@ntnyq/prettier-config": "^1.9.0",
-    "@types/animejs": "^3.1.7",
-    "@types/node": "^20.3.2",
-    "@vitejs/plugin-vue": "^4.2.3",
-    "@vue/tsconfig": "^0.4.0",
-    "bumpp": "^9.1.1",
-    "eslint": "^8.43.0",
-    "husky": "^8.0.3",
+    "@ntnyq/eslint-config": "^3.0.0-beta.18",
+    "@ntnyq/prettier-config": "^1.21.3",
+    "@types/animejs": "^3.1.12",
+    "@types/node": "^22.7.4",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/tsconfig": "^0.5.1",
+    "bumpp": "^9.6.1",
+    "eslint": "^9.12.0",
+    "husky": "^9.1.6",
     "nano-staged": "^0.8.0",
-    "prettier": "^2.8.8",
-    "sass": "^1.63.6",
-    "typescript": "^5.1.5",
-    "unocss": "^0.53.4",
-    "unplugin-vue-components": "^0.25.1",
-    "vite": "^4.3.9",
-    "vue-tsc": "^1.8.2"
+    "prettier": "^3.3.3",
+    "sass-embedded": "^1.79.4",
+    "typescript": "^5.6.2",
+    "unocss": "^0.63.3",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.4.8",
+    "vue-tsc": "^2.1.6"
   },
   "prettier": "@ntnyq/prettier-config",
   "nano-staged": {
-    "*.{js,ts,vue,json,md,yml,yaml}": "eslint --fix"
+    "*.{js,ts,mjs,cjs,vue,json,md,yml,yaml}": "eslint --fix"
   }
 }
