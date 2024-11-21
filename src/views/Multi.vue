@@ -1,151 +1,119 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
-
 const num = ref(0)
 const isShow = ref(true)
 const isDefault = ref(true)
-const color = computed(() => ['blue', 'green', 'red'][num.value % 3])
+const colorClassList = ref(['btn-simple-teal', 'btn-simple-orange', 'btn-simple-cyan'])
+
+const color = computed(() => colorClassList.value[num.value % 3])
 </script>
 
 <template>
   <div class="multi">
     <LsSection title="2个Button">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
-          enter-active-class="animated bounceInLeft"
-          leave-active-class="animated bounceOutRight"
+          enter-active-class="animate__animated animate__bounceInLeft"
+          leave-active-class="animate__animated animate__bounceOutRight"
         >
-          <button
+          <SimpleButton
             v-if="isShow"
-            :key="1"
-            type="button"
-          >
-            我是按钮1
-          </button>
-          <button
+            title="我是按钮1"
+          />
+          <SimpleButton
             v-else
-            :key="2"
-            style="background-color: green"
-            type="button"
-          >
-            咦，我咋绿了
-          </button>
+            color="btn-simple-green"
+            title="咦，我咋绿了"
+          />
         </Transition>
       </template>
     </LsSection>
     <LsSection title="3个Button">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="num++"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
-          enter-active-class="animated slideInRight"
-          leave-active-class="animated slideOutLeft"
+          enter-active-class="animate__animated animate__slideInRight"
+          leave-active-class="animate__animated animate__slideOutLeft"
         >
-          <button
+          <SimpleButton
             v-if="isShow"
-            key="blue"
-            :style="{ backgroundColor: ['green', 'red', 'blur'][num % 3] }"
-            type="button"
-          >
-            我是按钮{{ num + 1 }}
-          </button>
+            :color="colorClassList[num % 3]"
+            :title="`我是按钮${num + 1}`"
+          />
         </Transition>
       </template>
     </LsSection>
     <LsSection title="1个Button">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="num++"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
-          enter-active-class="animated zoomInRight"
-          leave-active-class="animated zoomOutLeft"
+          enter-active-class="animate__animated animate__zoomInRight"
+          leave-active-class="animate__animated animate__zoomOutLeft"
         >
-          <button
+          <SimpleButton
             :key="color"
-            :style="`background-color: ${color};`"
-            type="button"
-          >
-            我是按钮
-          </button>
+            :color="color"
+            title="我是按钮"
+          />
         </Transition>
       </template>
     </LsSection>
     <LsSection title="过渡模式">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          style="margin-right: 30px"
-          type="button"
-        >
-          切换显示
-        </button>
-        <button
+          title="切换显示"
+        />
+        <SimpleButton
           @click="isDefault = !isDefault"
-          style="margin-right: 30px"
-          type="button"
-        >
-          切换模式
-        </button>
+          title="切换模式"
+        />
         <strong>{{ isDefault ? 'in-out' : 'out-in' }}</strong>
       </template>
       <template #main>
         <Transition
           :mode="isDefault ? 'in-out' : 'out-in'"
-          enter-active-class="animated bounceInRight"
-          leave-active-class="animated bounceOutLeft"
+          enter-active-class="animate__animated animate__bounceInRight"
+          leave-active-class="animate__animated animate__bounceOutLeft"
         >
-          <button
+          <SimpleButton
             v-if="isShow"
-            :key="1"
-            type="button"
-          >
-            我是按钮1
-          </button>
-          <button
+            title="我是按钮1"
+          />
+          <SimpleButton
             v-else
-            :key="2"
-            style="background-color: green"
-            type="button"
-          >
-            咦，我咋绿了
-          </button>
+            color="btn-simple-green"
+            title="咦，我咋绿了"
+          />
         </Transition>
       </template>
     </LsSection>
     <LsSection title="多组件过渡">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          style="margin-right: 30px"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
-          enter-active-class="animated bounceInRight"
-          leave-active-class="animated bounceOutLeft"
+          enter-active-class="animate__animated animate__bounceInRight"
+          leave-active-class="animate__animated animate__bounceOutLeft"
           mode="out-in"
         >
           <RedCircle v-if="isShow" />

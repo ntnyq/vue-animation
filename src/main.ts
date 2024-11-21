@@ -1,7 +1,7 @@
-import 'animate.css'
+import 'animate.css/animate.css'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
-import { createApp } from 'vue'
+import './style.css'
 import App from '@/App.vue'
 import router from '@/router'
 

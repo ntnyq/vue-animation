@@ -19,13 +19,15 @@
   ],
   "cSpell.words": [
     "animejs",
-    "Avenir",
+    "avenir",
     "bumpp",
     "changelogithub",
+    "iconify",
     "navs",
     "nocheck",
     "tada",
     "unplugin",
-    "vuex"
+    "vite",
+    "vueuse"
   ]
 }

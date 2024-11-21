@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 const list = ref([
   { path: 'basic', name: '基础用法' },
   { path: 'hook', name: '钩子函数' },

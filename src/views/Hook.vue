@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import anime from 'animejs'
-import { ref } from 'vue'
 
 type AnimeDone = () => void
 
@@ -100,12 +99,10 @@ const onLeaveCancelled = () => {
   <div class="hook">
     <LsSection title="初始渲染">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
@@ -124,12 +121,10 @@ const onLeaveCancelled = () => {
     </LsSection>
     <LsSection title="钩子函数">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition

@@ -112,7 +112,9 @@
 
 ```vue
 <template>
-  <Transition :duration="{ entry: 2000, leave: 3000 }"/>
+  <Transition :duration="{ entry: 2000, leave: 3000 }">
+    <!-- ... -->
+  </Transition>
 </template>
 ```
 
@@ -272,8 +274,8 @@ export default {
 ```vue
 <template>
   <Transition
-    enter-active-name="animated slideInRight"
-    leave-active-class="animated slideOutLeft"
+    enter-active-name="animate__animated animate__slideInRight"
+    leave-active-class="animate__animated animate__slideOutLeft"
   >
     <button
       v-if="status === 0"
@@ -303,19 +305,12 @@ export default {
 有时候，我们只需要给元素绑定`key`值，若`key`值发生变化，也可以触发过渡效果。
 
 ```vue
-<script>
-export default {
-  computed: {
-    text() {
-      return ['活动未开始', '活动进行中', '活动已完成'][this.status % 3]
-    },
-  },
-  data() {
-    return {
-      status: 0,
-    }
-  },
-}
+<script setup>
+const status = ref(0)
+
+const text = computed(() => {
+  return ['活动未开始', '活动进行中', '活动已完成'][status % 3]
+})
 </script>
 
 <template>
@@ -327,8 +322,8 @@ export default {
   </button>
 
   <Transition
-    enter-active-class="animated slideInRight"
-    leave-active-class="animated slideOutLeft"
+    enter-active-class="animate__animated animate__slideInRight"
+    leave-active-class="animate__animated animate__slideOutLeft"
   >
     <button
       :key="status"
@@ -354,45 +349,31 @@ export default {
 > Vue-cli 创建的项目模板，使用的是 _runtime-only_ 的环境，不支持使用`template`的模板自定义组件。
 
 ```vue
-<script>
+<script setup>
 import BlueCircle from '@/components/Circle/BlueCircle'
 import RedCircle from '@/components/Circle/RedCircle'
 
-export default {
-  components: {
-    RedCircle,
-    BlueCircle,
-  },
+const isShow = ref(true)
 
-  computed: {
-    circle() {
-      return this.isShow ? 'red-circle' : 'blue-circle'
-    },
-  },
-
-  data() {
-    return {
-      isShow: true,
-    }
-  },
-}
+const circle = computed(() => {
+  return isShow ? 'red-circle' : 'blue-circle'
+})
 </script>
 
 <template>
   <button
     @click="isShow = !isShow"
-    style="margin-right: 30px;"
     type="button"
   >
     切换显示
   </button>
 
   <Transition
-    enter-active-class="animated bounceInRight"
-    leave-active-class="animated bounceOutLeft"
+    enter-active-class="animate__animated animate__bounceInRight"
+    leave-active-class="animate__animated animate__bounceOutLeft"
     mode="out-in"
   >
-    <Component :is="circle"/>
+    <Component :is="circle" />
   </Transition>
 </template>
 ```
@@ -427,8 +408,8 @@ export default {
   <LsSection title="排序过渡">
     <button
       @click="add"
-      style="margin-right: 30px;"
       type="button"
+      class="mr-4"
     >
       添加
     </button>
@@ -509,7 +490,7 @@ export default {
 
 #### 过渡延迟时间
 
-`animated.css` 内置了延时 1s 至 5s 的类，格式为 `delay-1s `至 `delay-5s`，当然根据自己需要，我们可以自定义别的过渡延迟时间，再将对应的类附加到动画元素上即可。
+`animate.css` 内置了延时 1s 至 5s 的类，格式为 `delay-1s `至 `delay-5s`，当然根据自己需要，我们可以自定义别的过渡延迟时间，再将对应的类附加到动画元素上即可。
 
 ```css
 .delay-10s {
@@ -523,10 +504,10 @@ export default {
 
 不过，它仍然提供了常用的几个持续时间类供我们使用。
 
-- `slow` 动画过渡持续**2s**
-- `slower` 动画过渡持续**3s**
-- `fast` 动画过渡持续**800ms**
-- `faster` 动画过渡持续**500ms**
+- `animate__slow` 动画过渡持续**2s**
+- `animate__slower` 动画过渡持续**3s**
+- `animate__fast` 动画过渡持续**800ms**
+- `animate__faster` 动画过渡持续**500ms**
 
 当然，如果上述提供的持续时间不能满足你的需求，你仍然可以自定义持续时间类来使用。
 
@@ -542,14 +523,14 @@ yarn add animate.css
 
 ```js
 // main.js
-import 'animate.css' // 这里animate.css是依赖的名字
+import 'animate.css/animate.css'
 ```
 
 ### 基本使用
 
 使用 `enter-active-class` 和 `leave-active-class` 即可以指定 `animate.css` 提供的动画类为动画形式。
 
-**注意！！！** 需要在上面的两个类上加 `animated` 类，或者直接加在过渡元素上面。若为多个元素过渡或者列表过渡的时候，则建议把 `animated` 类加在 Vue 的动画状态类上。
+**注意！！！** 需要在上面的两个类上加 `animate__animated` 类，或者直接加在过渡元素上面。若为多个元素过渡或者列表过渡的时候，则建议把 `animate__animated` 类加在 Vue 的动画状态类上。
 
 ```vue
 <template>
@@ -561,12 +542,12 @@ import 'animate.css' // 这里animate.css是依赖的名字
   </button>
 
   <Transition
-    enter-active-class="zoomIn"
-    leave-active-class="zoomOut"
+    enter-active-class="animate__zoomIn"
+    leave-active-class="animate__zoomOut"
   >
     <LsBox
       v-show="isShow"
-      class="animated"
+      class="animate__animated"
     />
   </Transition>
 
@@ -578,8 +559,8 @@ import 'animate.css' // 这里animate.css是依赖的名字
   </button>
 
   <Transition
-    enter-active-class="animated zoomIn"
-    leave-active-class="animated zoomOut"
+    enter-active-class="animate__animated animate__zoomIn"
+    leave-active-class="animate__animated animate__zoomOut"
   >
     <LsBox v-show="isShow" />
   </Transition>
@@ -595,8 +576,8 @@ import 'animate.css' // 这里animate.css是依赖的名字
 ```vue
 <template>
   <Transition
-    enter-active-class="animated fadeInDown"
-    leave-active-class="animated fadeOutUp"
+    enter-active-class="animate__animated animate__fadeInDown"
+    leave-active-class="animate__animated animate__fadeOutUp"
     mode="out-in"
   >
     <KeepAlive>
@@ -644,15 +625,15 @@ export default {
   name: 'App',
   data() {
     return {
-      trsInName: 'fadeIn',
-      trsOutName: 'fadeOut',
+      trsInName: 'animate__fadeIn',
+      trsOutName: 'animate__fadeOut',
     }
   },
   watch: {
     route(to) {
       const { transitionInName, transitionOutName } = to.meta
-      transitionInName && (this.trsInName = transitionInName)
-      transitionOutName && (this.trsOutName = transitionOutName)
+      transitionInName && (this.trsInName = `animate__${transitionInName}`)
+      transitionOutName && (this.trsOutName = `animate__${transitionOutName}`)
     },
   },
 }

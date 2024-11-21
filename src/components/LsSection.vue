@@ -1,58 +1,26 @@
 <script lang="ts" setup>
-defineProps({
-  title: {
-    type: String,
-    default: '',
+withDefaults(
+  defineProps<{
+    title?: string
+  }>(),
+  {
+    title: '',
   },
-})
+)
 </script>
 
 <template>
-  <div class="ls-section">
-    <h2 class="ls-section-title">
+  <div class="relative mb-6">
+    <h2 class="relative mb-3 px-2 text-center">
       <slot name="title">{{ title }}</slot>
     </h2>
-    <div class="ls-section-ctrl">
+    <div class="relative mb-3 flex items-center gap-4">
       <slot name="ctrl" />
     </div>
-    <div class="ls-section-main">
-      <div class="ls-section-main-inner">
+    <div class="relative bg-zinc-100 p-6 shadow-sm dark:bg-zinc-800">
+      <div class="relative min-h-200px of-hidden">
         <slot name="main" />
       </div>
     </div>
   </div>
 </template>
-
-<style lang="scss">
-.ls-section {
-  position: relative;
-  margin-bottom: 40px;
-
-  .ls-section {
-    &-title {
-      position: relative;
-      padding: 10px 0;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    &-ctrl {
-      position: relative;
-      padding: 10px 0;
-      margin-bottom: 15px;
-    }
-
-    &-main {
-      position: relative;
-      padding: 30px;
-      background-color: #f5f5f5;
-
-      &-inner {
-        position: relative;
-        min-height: 200px;
-        overflow: hidden;
-      }
-    }
-  }
-}
-</style>

@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-defineProps({
-  bgColor: {
-    type: String,
-    default: 'red',
+withDefaults(
+  defineProps<{
+    bgColor?: string
+  }>(),
+  {
+    bgColor: 'red',
   },
-})
+)
 </script>
 
 <template>

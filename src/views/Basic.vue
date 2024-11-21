@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 const isShow = ref(true)
 </script>
 
@@ -8,16 +6,14 @@ const isShow = ref(true)
   <div class="basic">
     <LsSection title="初始过渡">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
-          appear-active-class="animated fadeOutRightBig"
+          appear-active-class="animate__animated animate__fadeOutRightBig"
           appear
         >
           <LsBox v-show="isShow" />
@@ -26,12 +22,10 @@ const isShow = ref(true)
     </LsSection>
     <LsSection title="基本用法">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition name="fade">
@@ -41,17 +35,15 @@ const isShow = ref(true)
     </LsSection>
     <LsSection title="自定义类名">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
-          enter-active-class="animated tada"
-          leave-active-class="animated bounceOutRight"
+          enter-active-class="animate__animated animate__tada"
+          leave-active-class="animate__animated animate__bounceOutRight"
           name="cus-animate"
         >
           <LsBox v-show="isShow" />
@@ -60,12 +52,10 @@ const isShow = ref(true)
     </LsSection>
     <LsSection title="关键帧动画">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition name="fold">

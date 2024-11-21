@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-
 const num = ref(1)
 const next = ref(10)
 const isShow = ref(true)
@@ -18,114 +16,102 @@ const remove = () => {
   <div class="anime">
     <LsSection title="基础动画">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
-          enter-active-class="zoomIn"
-          leave-active-class="zoomOut"
+          enter-active-class="animate__zoomIn"
+          leave-active-class="animate__zoomOut"
         >
           <LsBox
             v-show="isShow"
-            class="animated"
+            class="animate__animated"
           />
         </Transition>
       </template>
     </LsSection>
     <LsSection title="元素切换">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="num++"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
-          enter-active-class="zoomIn"
-          leave-active-class="zoomOut"
+          enter-active-class="animate__zoomIn"
+          leave-active-class="animate__zoomOut"
         >
           <LsBox
             v-if="num % 2 === 0"
             key="red"
-            class="animated"
+            class="animate__animated"
           />
           <LsBox
             v-else
             key="blue"
             bg-color="blue"
-            class="animated"
+            class="animate__animated"
           />
         </Transition>
       </template>
     </LsSection>
     <LsSection title="排序过渡">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="add"
-          style="margin-right: 30px"
-          type="button"
-        >
-          添加
-        </button>
-        <button
+          title="添加"
+        />
+        <SimpleButton
           @click="remove"
-          type="button"
-        >
-          删除
-        </button>
+          title="删除"
+        />
       </template>
       <template #main>
         <TransitionGroup
           name="list"
-          enter-active-class="animated rotateInUpLeft"
-          leave-active-class="animated rotateOutDownRight poa"
+          enter-active-class="animate__animated animate__rotateInUpLeft"
+          leave-active-class="animate__animated animate__rotateOutDownRight poa"
           tag="p"
         >
           <span
             v-for="id in array"
             :key="id"
             class="num"
-            >{{ id }}</span
           >
+            {{ id }}
+          </span>
         </TransitionGroup>
       </template>
     </LsSection>
     <LsSection title="动画延时">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
-          enter-active-class="zoomIn"
-          leave-active-class="zoomOut"
+          enter-active-class="animate__zoomIn"
+          leave-active-class="animate__zoomOut"
         >
           <LsBox
             v-show="isShow"
-            class="animated delay-1s"
+            class="animate__animated delay-1s"
           />
         </Transition>
       </template>
     </LsSection>
     <LsSection title="自定义持续时间">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="isShow = !isShow"
-          type="button"
-        >
-          切换显示
-        </button>
+          title="切换显示"
+        />
       </template>
       <template #main>
         <Transition
@@ -134,7 +120,7 @@ const remove = () => {
         >
           <LsBox
             v-show="isShow"
-            class="animated faster"
+            class="animate__animated animate__faster"
           />
         </Transition>
       </template>

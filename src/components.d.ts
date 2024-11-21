@@ -7,11 +7,15 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ActionButton: typeof import('./components/atomic/ActionButton.vue')['default']
     BlueCircle: typeof import('./components/BlueCircle.vue')['default']
+    DarkToggle: typeof import('./components/atomic/DarkToggle.vue')['default']
+    IconButton: typeof import('./components/atomic/IconButton.vue')['default']
     LsBox: typeof import('./components/LsBox.vue')['default']
     LsSection: typeof import('./components/LsSection.vue')['default']
     RedCircle: typeof import('./components/RedCircle.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SimpleButton: typeof import('./components/atomic/SimpleButton.vue')['default']
   }
 }

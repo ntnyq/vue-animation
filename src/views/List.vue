@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import anime from 'animejs'
-import { computed, ref } from 'vue'
 
 const next = ref(10)
 const text = ref('')
@@ -75,19 +74,14 @@ const leave = (el: any, done: () => void) => {
   <div class="list">
     <LsSection title="进入离开">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="add"
-          style="margin-right: 30px"
-          type="button"
-        >
-          添加
-        </button>
-        <button
+          title="添加"
+        />
+        <SimpleButton
           @click="remove"
-          type="button"
-        >
-          删除
-        </button>
+          title="删除"
+        />
       </template>
       <template #main>
         <TransitionGroup
@@ -106,19 +100,14 @@ const leave = (el: any, done: () => void) => {
     </LsSection>
     <LsSection title="排序过渡">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="add"
-          style="margin-right: 30px"
-          type="button"
-        >
-          添加
-        </button>
-        <button
+          title="添加"
+        />
+        <SimpleButton
           @click="remove"
-          type="button"
-        >
-          删除
-        </button>
+          title="删除"
+        />
       </template>
       <template #main>
         <TransitionGroup
@@ -137,12 +126,10 @@ const leave = (el: any, done: () => void) => {
     </LsSection>
     <LsSection title="乱序动画">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="shuffle"
-          type="button"
-        >
-          乱序
-        </button>
+          title="乱序"
+        />
       </template>
       <template #main>
         <TransitionGroup
@@ -161,12 +148,10 @@ const leave = (el: any, done: () => void) => {
     </LsSection>
     <LsSection title="网格乱序">
       <template #ctrl>
-        <button
+        <SimpleButton
           @click="shuffle2"
-          type="button"
-        >
-          乱序
-        </button>
+          title="乱序"
+        />
       </template>
       <template #main>
         <TransitionGroup
@@ -185,12 +170,14 @@ const leave = (el: any, done: () => void) => {
     </LsSection>
     <LsSection title="js列表过渡">
       <template #ctrl>
-        <input
-          v-model="text"
-          placeholder="输入搜索"
-          type="text"
-          class="input"
-        />
+        <div class="max-w-320px w-full">
+          <input
+            v-model="text"
+            placeholder="输入搜索"
+            type="text"
+            class="box-input"
+          />
+        </div>
       </template>
       <template #main>
         <TransitionGroup
