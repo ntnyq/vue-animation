@@ -7,19 +7,29 @@ import {
 } from 'unocss'
 
 export default defineConfig({
+  presets: [
+    presetUno(),
+    presetIcons({
+      autoInstall: true,
+      extraProperties: {
+        color: 'inherit',
+      },
+      scale: 1.2,
+    }),
+  ],
+
   shortcuts: [
     {
-      'flex-center': 'flex items-center justify-center',
-
       'bg-base': 'bg-white dark:bg-black',
       'bg-hover': 'bg-[#8881]',
-      'color-base': 'text-#222 dark:text-#ddd',
       'border-base': 'border-gray:20',
-
       'box-input': 'box-input-shell box-input-inner focus:(border-primary ring-2 ring-primary:20)',
       'box-input-inner': 'px-2 py-1 outline-none w-full bg-base rounded-sm placeholder-gray:50',
+
       'box-input-shell':
         'bg-base border-base color-base border rounded-sm focus-within:(border-primary ring-2 ring-primary:20) disabled:(bg-gray:10 color-gray:50)',
+      'color-base': 'text-#222 dark:text-#ddd',
+      'flex-center': 'flex items-center justify-center',
     },
     [
       /^btn-simple-(.*)$/,
@@ -40,17 +50,6 @@ export default defineConfig({
       primary: '#4b32c3',
     },
   },
-
-  presets: [
-    presetUno(),
-    presetIcons({
-      scale: 1.2,
-      autoInstall: true,
-      extraProperties: {
-        color: 'inherit',
-      },
-    }),
-  ],
 
   transformers: [transformerDirectives(), transformerVariantGroup()],
 })

@@ -6,16 +6,6 @@ import VueComponents from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
-
-  optimizeDeps: {
-    include: ['vue', 'vue-router'],
-  },
-
   build: {
     rollupOptions: {
       output: {
@@ -23,10 +13,6 @@ export default defineConfig({
         entryFileNames: 'entry-[hash].js',
       },
     },
-  },
-
-  server: {
-    open: true,
   },
 
   css: {
@@ -37,18 +23,32 @@ export default defineConfig({
     },
   },
 
+  optimizeDeps: {
+    include: ['vue', 'vue-router'],
+  },
+
   plugins: [
     Vue(),
 
     UnoCSS(),
 
     AutoImport({
-      imports: ['vue', 'vue-router', '@vueuse/core'],
       dts: 'src/auto-imports.d.ts',
+      imports: ['vue', 'vue-router', '@vueuse/core'],
     }),
 
     VueComponents({
       dts: 'src/components.d.ts',
     }),
   ],
+
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+
+  server: {
+    open: true,
+  },
 })
