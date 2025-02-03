@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.1",
   "private": true,
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@9.15.5",
   "author": "ntnyq",
   "repository": "ntnyq/vue-animation",
   "scripts": {
@@ -27,7 +27,7 @@
     "@ntnyq/eslint-config": "^3.12.3",
     "@ntnyq/prettier-config": "^1.22.1",
     "@types/animejs": "^3.1.13",
-    "@types/node": "^22.10.10",
+    "@types/node": "^22.13.0",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/tsconfig": "^0.7.0",
     "bumpp": "^10.0.1",
