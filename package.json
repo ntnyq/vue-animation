@@ -25,7 +25,7 @@
   "devDependencies": {
     "@iconify-json/uil": "^1.2.3",
     "@ntnyq/eslint-config": "^3.12.3",
-    "@ntnyq/prettier-config": "^1.22.1",
+    "@ntnyq/prettier-config": "^2.0.0",
     "@types/animejs": "^3.1.13",
     "@types/node": "^22.13.4",
     "@vitejs/plugin-vue": "^5.2.1",
