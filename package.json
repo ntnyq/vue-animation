@@ -15,7 +15,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@unocss/reset": "^65.5.0",
+    "@unocss/reset": "^66.0.0",
     "@vueuse/core": "^12.7.0",
     "animate.css": "^4.1.1",
     "animejs": "^3.2.2",
@@ -37,7 +37,7 @@
     "prettier": "^3.5.3",
     "sass-embedded": "^1.85.1",
     "typescript": "^5.8.2",
-    "unocss": "^65.5.0",
+    "unocss": "^66.0.0",
     "unplugin-auto-import": "^19.1.1",
     "unplugin-vue-components": "^28.4.1",
     "vite": "^6.2.0",
