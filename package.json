@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.1",
   "private": true,
-  "packageManager": "pnpm@10.6.2",
+  "packageManager": "pnpm@10.6.3",
   "author": "ntnyq",
   "repository": "ntnyq/vue-animation",
   "scripts": {
@@ -28,9 +28,9 @@
     "@ntnyq/prettier-config": "^2.0.0",
     "@types/animejs": "^3.1.13",
     "@types/node": "^22.13.10",
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue": "^5.2.2",
     "@vue/tsconfig": "^0.7.0",
-    "bumpp": "^10.0.3",
+    "bumpp": "^10.1.0",
     "eslint": "^9.22.0",
     "husky": "^9.1.7",
     "nano-staged": "^0.8.0",
@@ -40,7 +40,7 @@
     "unocss": "^66.0.0",
     "unplugin-auto-import": "^19.1.1",
     "unplugin-vue-components": "^28.4.1",
-    "vite": "^6.2.1",
+    "vite": "^6.2.2",
     "vue-tsc": "^2.2.8"
   },
   "nano-staged": {
