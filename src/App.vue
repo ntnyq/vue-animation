@@ -13,7 +13,9 @@ import { name } from '../package.json'
       </RouterLink>
       <DarkToggle />
     </div>
-    <div class="relative mx-auto max-w-2xl min-h-screen min-w-xs flex flex-col p-4">
+    <div
+      class="relative mx-auto max-w-2xl min-h-screen min-w-xs flex flex-col p-4"
+    >
       <div class="flex flex-auto">
         <RouterView v-slot="{ Component }">
           <Transition

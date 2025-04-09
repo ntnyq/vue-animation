@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import anime from 'animejs'
+import { animate } from 'animejs'
 
 const next = ref(10)
 const text = ref('')
@@ -20,7 +20,9 @@ const list = ref([
   { lang: 'Markdown' },
   { lang: 'Perl' },
 ])
-const cells = ref(Array.from({ length: 81 }, (_, idx) => ({ idx, number: (idx % 9) + 1 })))
+const cells = ref(
+  Array.from({ length: 81 }, (_, idx) => ({ idx, number: (idx % 9) + 1 })),
+)
 const computedList = computed(() =>
   text.value.length > 0
     ? list.value.filter(item => item.lang.toLowerCase().includes(text.value))
@@ -50,22 +52,20 @@ const beforeEnter = (el: any) => {
 }
 
 const enter = (el: any, done: () => void) => {
-  anime({
-    targets: el,
+  animate(el, {
     opacity: 1,
     height: '1.6em',
     duration: () => Number.parseInt(el.dataset.index ?? '') * 800,
-    complete: done,
+    onComplete: done,
   })
 }
 
 const leave = (el: any, done: () => void) => {
-  anime({
-    targets: el,
+  animate(el, {
     opacity: 0,
     height: 0,
     duration: () => Number.parseInt(el.dataset.index ?? '') * 400,
-    complete: done,
+    onComplete: done,
   })
 }
 </script>

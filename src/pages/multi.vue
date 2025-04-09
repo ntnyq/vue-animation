@@ -2,7 +2,11 @@
 const num = ref(0)
 const isShow = ref(true)
 const isDefault = ref(true)
-const colorClassList = ref(['btn-simple-teal', 'btn-simple-orange', 'btn-simple-cyan'])
+const colorClassList = ref([
+  'btn-simple-teal',
+  'btn-simple-orange',
+  'btn-simple-cyan',
+])
 
 const color = computed(() => colorClassList.value[num.value % 3])
 </script>

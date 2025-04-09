@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const list = ref([
+const list = shallowRef([
   { path: 'basic', name: '基础用法' },
   { path: 'hook', name: '钩子函数' },
   { path: 'multi', name: '多个元素' },

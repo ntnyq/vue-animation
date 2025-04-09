@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import anime from 'animejs'
+import { animate, utils } from 'animejs'
 
 type AnimeDone = () => void
 
@@ -15,12 +15,11 @@ const onBeforeAppear = (el: Element) => {
 }
 
 const onAppear = (el: Element, done: AnimeDone) => {
-  anime({
-    targets: el,
+  animate(el, {
     opacity: 0.2,
     translateX: 300,
     duration: 3000,
-    complete() {
+    onComplete() {
       log('appear')
       done()
     },
@@ -41,16 +40,13 @@ const onBeforeEnter = () => {
 }
 
 const onEnter = (el: Element, done: AnimeDone) => {
-  anime({
-    targets: '.box2',
+  animate('.box2', {
     opacity: 0.6,
     translateX: (el.parentElement?.clientWidth ?? 0) - 100 * 2,
     scale: 0.5,
     backgroundColor: '#012345',
-    duration() {
-      return anime.random(800, 1600)
-    },
-    complete() {
+    duration: () => utils.random(800, 1600),
+    onComplete() {
       log('enter')
       done()
     },
@@ -71,14 +67,13 @@ const beforeLeave = () => {
 }
 
 const onLeave = (el: Element, done: AnimeDone) => {
-  anime({
-    targets: '.box2',
+  animate('.box2', {
     translateX: 0,
     rotate: '5turn',
     scale: '1',
     backgroundColor: '#f00',
     duration: 1500,
-    complete() {
+    onComplete() {
       log('leave')
       done()
     },
