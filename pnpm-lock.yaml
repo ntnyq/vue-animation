@@ -18,8 +18,8 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1
       animejs:
-        specifier: ^3.2.2
-        version: 3.2.2
+        specifier: ^4.0.2
+        version: 4.0.2
       vue:
         specifier: ^3.5.15
         version: 3.5.15(typescript@5.8.3)
@@ -1327,8 +1327,8 @@ packages:
   animate.css@4.1.1:
     resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
 
-  animejs@3.2.2:
-    resolution: {integrity: sha512-Ao95qWLpDPXXM+WrmwcKbl6uNlC5tjnowlaRYtuVDHHoygjtIPfDUoK9NthrlZsQSKjZXlmji2TrBUAVbiH0LQ==}
+  animejs@4.0.2:
+    resolution: {integrity: sha512-f0L/kSya2RF23iMSF/VO01pMmLwlAFoiQeNAvBXhEyLzIPd2/QTBRatwGUqkVCC6seaAJYzAkGir55N4SL+h3A==}
 
   ansi-styles@4.3.0:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
@@ -4324,7 +4324,7 @@ snapshots:
 
   animate.css@4.1.1: {}
 
-  animejs@3.2.2: {}
+  animejs@4.0.2: {}
 
   ansi-styles@4.3.0:
     dependencies:
@@ -6097,7 +6097,7 @@ snapshots:
   tsx@4.19.2:
     dependencies:
       esbuild: 0.23.1
-      get-tsconfig: 4.10.0
+      get-tsconfig: 4.10.1
     optionalDependencies:
       fsevents: 2.3.3
     optional: true
@@ -6274,7 +6274,7 @@ snapshots:
   vite-node@2.1.2(@types/node@22.15.21)(sass-embedded@1.89.0)(sass@1.79.4):
     dependencies:
       cac: 6.7.14
-      debug: 4.4.0
+      debug: 4.4.1
       pathe: 1.1.2
       vite: 5.4.11(@types/node@22.15.21)(sass-embedded@1.89.0)(sass@1.79.4)
     transitivePeerDependencies:
@@ -6328,7 +6328,7 @@ snapshots:
       '@vitest/spy': 2.1.2
       '@vitest/utils': 2.1.2
       chai: 5.1.1
-      debug: 4.4.0
+      debug: 4.4.1
       magic-string: 0.30.17
       pathe: 1.1.2
       std-env: 3.7.0
