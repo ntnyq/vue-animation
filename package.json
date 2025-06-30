@@ -28,7 +28,7 @@
     "@ntnyq/prettier-config": "^2.2.0",
     "@types/animejs": "^3.1.13",
     "@types/node": "^22.15.34",
-    "@vitejs/plugin-vue": "^5.2.4",
+    "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
     "bumpp": "^10.2.0",
     "eslint": "^9.30.0",
