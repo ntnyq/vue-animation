@@ -42,7 +42,7 @@
     "unplugin-vue-components": "^28.8.0",
     "unplugin-vue-router": "^0.14.0",
     "vite": "^7.0.4",
-    "vue-tsc": "^2.2.12"
+    "vue-tsc": "^3.0.1"
   },
   "nano-staged": {
     "*.{js,ts,mjs,cjs,vue,md,yml,yaml,json}": "eslint --fix"
