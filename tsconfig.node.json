@@ -2,9 +2,12 @@
   "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
     "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "types": ["node"],
     "erasableSyntaxOnly": true,
     "libReplacement": false
   },
-  "include": ["scripts", "vite.config.ts", "vitest.config.*"]
+  "include": ["scripts", "*.config.ts"]
 }

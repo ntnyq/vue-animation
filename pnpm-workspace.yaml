@@ -1,6 +1,6 @@
 overrides:
-  esbuild: ^0.25.5
-
+  esbuild: ^0.25.9
 onlyBuiltDependencies:
+  - '@parcel/watcher'
   - esbuild
   - unrs-resolver

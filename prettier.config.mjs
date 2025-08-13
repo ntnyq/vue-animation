@@ -3,7 +3,6 @@
 import { defineConfig } from '@ntnyq/prettier-config'
 
 export default defineConfig({
-
   overrides: [
     {
       files: ['**/*.html'],
